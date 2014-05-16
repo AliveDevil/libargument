@@ -17,8 +17,8 @@ Thinking about how the library should behave. Writing down some structures and u
 /switch4 /parameter="value with whitespace" "/parameter=value with whitespace"
 ```
 
-Escape-sequences
-\ , \t, \n
+Escape-sequences  
+`\ , \t, \n`
 
 ## Types to be implemented
 * Switch
