@@ -7,7 +7,7 @@ Thinking about how the library should behave. Writing down some structures and u
 ## Plans
 * execute different methods based on selected switches (behave like PowerShell script)
 * match first action
-* Autocomplete
+* ~~Autocomplete~~ (this requires a custom written command prompt. Won't do that)
 
 ## Thoughts
 ```
