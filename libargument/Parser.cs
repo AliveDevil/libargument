@@ -52,6 +52,139 @@ namespace libargument
 #if DEBUG
 
 		[TestMethod]
+		public void TestInterpreteCharacterValueAppend()
+		{
+			// Tests for
+			// append = !((character == '"' && !(inQuote && nextEscape)) && ((character == '\\' || character == ' ') && !nextEscape));
+			// in interpreteCharacterValue()
+
+			var test = new[]
+			{
+				// Character is "
+				new { ExpectedAppend = false, InQuote = false, NextEscape = false, Character = '"' },
+				new { ExpectedAppend = true, InQuote = false, NextEscape = true, Character = '"' },
+				new { ExpectedAppend = false, InQuote = true, NextEscape = false, Character = '"' },
+				new { ExpectedAppend = true, InQuote = true, NextEscape = true, Character = '"' },
+				// Character is \\
+				new { ExpectedAppend = false, InQuote = false, NextEscape = false, Character = '\\' },
+				new { ExpectedAppend = true, InQuote = false, NextEscape = true, Character = '\\' },
+				new { ExpectedAppend = false, InQuote = true, NextEscape = false, Character = '\\' },
+				new { ExpectedAppend = true, InQuote = true, NextEscape = true, Character = '\\' },
+				// Character is ' '
+				new { ExpectedAppend = false, InQuote = false, NextEscape = false, Character = ' ' },
+				new { ExpectedAppend = true, InQuote = false, NextEscape = true, Character = ' ' },
+				new { ExpectedAppend = true, InQuote = true, NextEscape = false, Character = ' ' },
+				new { ExpectedAppend = true, InQuote = true, NextEscape = true, Character = ' ' },
+				// Character is (something else)
+				new { ExpectedAppend = true, InQuote = false, NextEscape = false, Character = '\0' },
+				new { ExpectedAppend = true, InQuote = false, NextEscape = true, Character = '\0' },
+				new { ExpectedAppend = true, InQuote = true, NextEscape = false, Character = '\0' },
+				new { ExpectedAppend = true, InQuote = true, NextEscape = true, Character = '\0' },
+			};
+
+			foreach (var item in test)
+			{
+				bool inQuote = item.InQuote, nextEscape = item.NextEscape, append, quit;
+				interpreteCharacterValue(item.Character, '\0', ref inQuote, ref nextEscape, out append, out quit);
+				Assert.AreEqual(item.ExpectedAppend, append);
+			}
+		}
+
+		[TestMethod]
+		public void TestInterpreteCharacterValueInQuote()
+		{
+			// Tests for
+			//	if (character == '"' & !inQuote & lastCharacter == '\0')
+			//		inQuote = true;
+			// in interpreteCharacterValue()
+
+			var test = new[]
+			{
+				// Character is ", and lastCharacter is empty
+				new { ExpectedInQuote = true, InQuote = false, NextEscape = false, Character = '"', LastCharacter = '\0' },
+				new { ExpectedInQuote = true, InQuote = false, NextEscape = true, Character = '"', LastCharacter = '\0' },
+				new { ExpectedInQuote = true, InQuote = true, NextEscape = false, Character = '"', LastCharacter = '\0' },
+				new { ExpectedInQuote = true, InQuote = true, NextEscape = true, Character = '"', LastCharacter = '\0' },
+				// Character is ", and lastCharacter is not empty
+				new { ExpectedInQuote = false, InQuote = false, NextEscape = false, Character = '"', LastCharacter = '\xff' },
+				new { ExpectedInQuote = false, InQuote = false, NextEscape = true, Character = '"', LastCharacter = '\xff' },
+				new { ExpectedInQuote = true, InQuote = true, NextEscape = false, Character = '"', LastCharacter = '\xff' },
+				new { ExpectedInQuote = true, InQuote = true, NextEscape = true, Character = '"', LastCharacter = '\xff' },
+			};
+
+			foreach (var item in test)
+			{
+				bool inQuote = item.InQuote, nextEscape = item.NextEscape, append, quit;
+				interpreteCharacterValue(item.Character, item.LastCharacter, ref inQuote, ref nextEscape, out append, out quit);
+				Assert.AreEqual(item.ExpectedInQuote, inQuote);
+			}
+		}
+
+		[TestMethod]
+		public void TestInterpreteCharacterValueNextEscape()
+		{
+			// Tests for
+			//	if (character == '\\' & !nextEscape)
+			//		nextEscape = true;
+			// in interpreteCharacterValue()
+
+			var test = new[]
+			{
+				// Character is \
+				new { ExpectedNextEscape = true, InQuote = false, NextEscape = false, Character = '\\' },
+				new { ExpectedNextEscape = false, InQuote = false, NextEscape = true, Character = '\\' },
+				new { ExpectedNextEscape = true, InQuote = true, NextEscape = false, Character = '\\' },
+				new { ExpectedNextEscape = false, InQuote = true, NextEscape = true, Character = '\\' },
+				// Character is something else
+				new { ExpectedNextEscape = false, InQuote = false, NextEscape = false, Character = '\0' },
+				new { ExpectedNextEscape = false, InQuote = false, NextEscape = true, Character = '\0' },
+				new { ExpectedNextEscape = false, InQuote = true, NextEscape = false, Character = '\0' },
+				new { ExpectedNextEscape = false, InQuote = true, NextEscape = true, Character = '\0' },
+			};
+
+			foreach (var item in test)
+			{
+				bool inQuote = item.InQuote, nextEscape = item.NextEscape, append, quit;
+				interpreteCharacterValue(item.Character, '\0', ref inQuote, ref nextEscape, out append, out quit);
+				Assert.AreEqual(item.ExpectedNextEscape, nextEscape);
+			}
+		}
+
+		[TestMethod]
+		public void TestInterpreteCharacterValueQuit()
+		{
+			// Tests for
+			// quit = (character == '"' && inQuote && !nextEscape) || (character == ' ' && !(nextEscape && inQuote));
+			// in interpreteCharacterValue()
+
+			var test = new[]
+			{
+				// Character is "
+				new { ExpectedQuit = false, InQuote = false, NextEscape = false, Character = '"' },
+				new { ExpectedQuit = false, InQuote = false, NextEscape = true, Character = '"' },
+				new { ExpectedQuit = true, InQuote = true, NextEscape = false, Character = '"' },
+				new { ExpectedQuit = false, InQuote = true, NextEscape = true, Character = '"' },
+				// Character is ' '
+				new { ExpectedQuit = true, InQuote = false, NextEscape = false, Character = ' ' },
+				new { ExpectedQuit = false, InQuote = false, NextEscape = true, Character = ' ' },
+				new { ExpectedQuit = false, InQuote = true, NextEscape = false, Character = ' ' },
+				new { ExpectedQuit = false, InQuote = true, NextEscape = true, Character = ' ' },
+				// Character is (something else)
+				new { ExpectedQuit = false, InQuote = false, NextEscape = false, Character = '\0' },
+				new { ExpectedQuit = false, InQuote = false, NextEscape = true, Character = '\0' },
+				new { ExpectedQuit = false, InQuote = true, NextEscape = false, Character = '\0' },
+				new { ExpectedQuit = false, InQuote = true, NextEscape = true, Character = '\0' },
+			};
+
+			foreach (var item in test)
+			{
+				bool inQuote = item.InQuote, nextEscape = item.NextEscape, append, quit;
+				interpreteCharacterValue(item.Character, '\0', ref inQuote, ref nextEscape, out append, out quit);
+				Assert.AreEqual(item.ExpectedQuit, quit);
+			}
+		}
+
+		[TestMethod]
 		public void TestReadParameter()
 		{
 			var t = new[]
@@ -99,6 +232,44 @@ namespace libargument
 				}
 			}
 			return false;
+		}
+
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="character"></param>
+		/// <param name="lastCharacter"></param>
+		/// <param name="inQuote"></param>
+		/// <param name="nextEscape"></param>
+		/// <returns></returns>
+		private void interpreteCharacterValue(char character, char lastCharacter, ref bool inQuote, ref bool nextEscape, out bool append, out bool quit)
+		{
+			//	do not append if
+			//		character is "
+			//			and not nextEscape
+			//		character is \
+			//			and not nextEscape
+			//		character is ' '
+			//			and not
+			//				nextEscape
+			//				or inQuote
+			append = !((character == '"' & !nextEscape) | (character == '\\' & !nextEscape) | (character == ' ' & !(nextEscape | inQuote)));
+
+			//	quit if
+			//		character is "
+			//			and inQuote and not nextEscape
+			//		character is ' '
+			//			and not
+			//				inQuote
+			//				or nextEscape
+			quit = (character == '"' & inQuote & !nextEscape) | (character == ' ' & !(nextEscape | inQuote));
+
+			if (character == '"' & !inQuote & lastCharacter == '\0')
+				inQuote = true;
+			var setNextEscape = false;
+			if (character == '\\' & !nextEscape)
+				setNextEscape = true;
+			nextEscape = setNextEscape;
 		}
 
 		/// <summary>
@@ -161,44 +332,15 @@ namespace libargument
 			var tokenBuilder = new StringBuilder();
 			int read;
 			char character, lastCharacter = '\0';
-			bool quit = false, inQuote = false, nextEscape = false, lastEscape;
+			bool append = false, quit = false, inQuote = false, nextEscape = false, lastEscape;
 			while (!quit & (read = reader.Read()) != -1)
 			{
 				character = (char)read;
 				lastEscape = nextEscape;
 
-				switch (character)
-				{
-					case '"':
-						if (!inQuote && lastCharacter == '\0')
-							inQuote = true;
-						else if (inQuote)
-							if (nextEscape)
-								tokenBuilder.Append('"');
-							else
-								quit = true;
-						else
-							quit = true;
-						break;
-
-					case '\\':
-						if (nextEscape)
-							tokenBuilder.Append('\\');
-						else
-							nextEscape = true;
-						break;
-
-					case ' ':
-						if (nextEscape || inQuote)
-							tokenBuilder.Append(' ');
-						else
-							quit = true;
-						break;
-
-					default:
-						tokenBuilder.Append(character);
-						break;
-				}
+				interpreteCharacterValue(character, lastCharacter, ref inQuote, ref nextEscape, out append, out quit);
+				if (append)
+					tokenBuilder.Append(character);
 
 				if (lastEscape)
 					nextEscape = false;
