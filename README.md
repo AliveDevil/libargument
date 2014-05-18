@@ -19,7 +19,7 @@ Thinking about how the library should behave. Writing down some structures and u
 ```
 
 Escape-sequences  
-`\ , \t, \n`
+`\ , \t, \n, \"`
 
 ## Types to be implemented
 * Switch
