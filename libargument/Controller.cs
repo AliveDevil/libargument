@@ -11,8 +11,12 @@ namespace libargument
 
 		public void Help([Abbreviation("h"), Abbreviation("?")] bool help, bool noLogo = false)
 		{
-			if (!noLogo)
-				PrintHeader();
+			if (!noLogo) PrintHeader();
+		}
+
+		public void Help()
+		{
+			Help(true, false);
 		}
 
 		private void PrintHeader()

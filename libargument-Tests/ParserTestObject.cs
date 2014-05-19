@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace libargument_Tests
 {
-	public class ParserTestObject
+	public class ParserTestObject : Controller
 	{
 		public void Test([Key("switch"), Abbreviation("s")] bool switchParameter)
 		{

@@ -18,7 +18,7 @@ namespace libargument_Tests
 		[TestMethod]
 		public void TokenizeTest()
 		{
-			var parser = new Parser<object>("/switch /switch=value");
+			var parser = new Parser<Controller>("/switch /switch=value");
 			parser.Tokenize();
 		}
 	}
