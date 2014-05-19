@@ -58,13 +58,8 @@ namespace libargument
 			var tokenList = new List<Token>();
 			using (var memory = new MemoryStream(Encoding.Default.GetBytes(arguments), false))
 			using (var reader = new StreamReader(memory))
-			{
-				int c;
-				while ((c = reader.Peek()) != -1)
-				{
+				while (reader.Peek() != -1)
 					tokenList.Add(readParameter(reader));
-				}
-			}
 			return false;
 		}
 
@@ -143,7 +138,7 @@ namespace libargument
 			{
 				character = (char)read;
 
-				if (character == '=')
+				if (character == '=' | character == ' ')
 					break;
 				else if (character != '/')
 					tokenBuilder.Append(character);
