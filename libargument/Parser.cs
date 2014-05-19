@@ -140,9 +140,8 @@ namespace libargument
 
 				if (character == '=' | character == ' ')
 					break;
-				else if (character != '/')
-					tokenBuilder.Append(character);
 
+				tokenBuilder.Append(character);
 				read = reader.Read();
 			}
 
@@ -169,8 +168,6 @@ namespace libargument
 				if (append)
 					tokenBuilder.Append(character);
 
-				if (lastEscape)
-					nextEscape = false;
 				lastCharacter = character;
 			}
 			return tokenBuilder.ToString();
