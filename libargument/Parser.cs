@@ -13,7 +13,6 @@ namespace libargument
 	/// <typeparam name="T"></typeparam>
 	public sealed partial class Parser<T> where T : IController
 	{
-		private const string header = "Help powered by libargument {0}.\n© 2014 by AliveDevil\nhttps://github.com/alivedevil/libargument/\nSkip with /noheader\n";
 		private string arguments;
 		private List<Token> tokenList;
 
@@ -31,25 +30,6 @@ namespace libargument
 		public Parser(string arguments)
 		{
 			this.arguments = arguments;
-		}
-
-		/// <summary>
-		/// Prints help for current type.
-		/// </summary>
-		public void Help()
-		{
-			Console.Write("Application name. Dummy\n");
-			Console.Write(header, GetType().Assembly.GetName().Version);
-		}
-
-		/// <summary>
-		/// Prints help for provided switch in current type.
-		/// </summary>
-		/// <param name="switch">Selected switch.</param>
-		public void Help(string @switch)
-		{
-			Console.Write("Application name. Dummy\n");
-			Console.Write(header, GetType().Assembly.GetName().Version);
 		}
 
 		/// <summary>

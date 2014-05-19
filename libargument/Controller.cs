@@ -21,7 +21,7 @@ namespace libargument
 
 		private void PrintHeader()
 		{
-			Console.Write(header);
+			Console.Write(header, GetType().Assembly.GetName().Version);
 		}
 	}
 }
