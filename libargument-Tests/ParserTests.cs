@@ -8,9 +8,17 @@ namespace libargument_Tests
 	public class ParserTests
 	{
 		[TestMethod]
+		public void MatchTest()
+		{
+			var parser = new Parser<ParserTestObject>("/switch");
+			parser.Tokenize();
+			parser.Match();
+		}
+
+		[TestMethod]
 		public void TokenizeTest()
 		{
-			Parser<object> parser = new Parser<object>("/switch /switch=value");
+			var parser = new Parser<object>("/switch /switch=value");
 			parser.Tokenize();
 		}
 	}

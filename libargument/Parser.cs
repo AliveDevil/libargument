@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace libargument
@@ -9,10 +11,11 @@ namespace libargument
 	///
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public sealed partial class Parser<T>
+	public sealed partial class Parser<T> where T : IController
 	{
 		private const string header = "Help powered by libargument {0}.\n© 2014 by AliveDevil\nhttps://github.com/alivedevil/libargument/\nSkip with /noheader\n";
 		private string arguments;
+		private List<Token> tokenList;
 
 		/// <summary>
 		/// Creates an Parser-object with Environment.CommandLine as argument.
@@ -50,17 +53,52 @@ namespace libargument
 		}
 
 		/// <summary>
+		///
+		/// </summary>
+		/// <returns></returns>
+		public void Match()
+		{
+			// prepare for bad code. Will be improved over time.
+
+			var targetType = typeof(T);
+			var methods = targetType.GetMethods(BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance).Where(item => item.ReturnType == typeof(void));
+			var lookup = methods.Select(item => new
+			{
+				Key = item.Name,
+				Parameter = item.GetParameters().Select(parameter => new
+				{
+					Key = parameter.GetKey(),
+					Type = parameter.ParameterType,
+					Abbreviations = parameter.GetAbbreviations(),
+					DefaultValue = parameter.DefaultValue
+				}),
+				MethodInfo = item
+			}).ToList();
+
+			foreach (var item in tokenList)
+			{
+				lookup = lookup.Where(method => method.Parameter.Any(parameter => parameter.Key.Equals(item.Key, StringComparison.OrdinalIgnoreCase) | parameter.Abbreviations.Contains(item.Key, OrdinalIgnoreCaseEqualityComparer.Singleton))).ToList();
+			}
+
+			if (lookup.Count == 0)
+				throw new InvalidOperationException(); // add descriptive message
+			if (lookup.Count > 1)
+				throw new InvalidOperationException(); // add descriptive message
+		}
+
+		/// <summary>
 		/// Reads Environment.CommandLine and prepares tokens.
 		/// </summary>
 		/// <returns>If creation of tokens was successful.</returns>
-		public bool Tokenize()
+		public void Tokenize()
 		{
-			var tokenList = new List<Token>();
+			if (tokenList == null)
+				tokenList = new List<Token>();
+			tokenList.Clear();
 			using (var memory = new MemoryStream(Encoding.Default.GetBytes(arguments), false))
 			using (var reader = new StreamReader(memory))
 				while (reader.Peek() != -1)
 					tokenList.Add(readParameter(reader));
-			return false;
 		}
 
 		/// <summary>
