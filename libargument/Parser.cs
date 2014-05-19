@@ -11,7 +11,7 @@ namespace libargument
 	/// <typeparam name="T"></typeparam>
 	public sealed partial class Parser<T>
 	{
-		private const string header = "Help powered by libargument {0}.\n© 2014 by AliveDevil\nhttps://github.com/alivedevil/libargument\nSkip with /noheader\n";
+		private const string header = "Help powered by libargument {0}.\n© 2014 by AliveDevil\nhttps://github.com/alivedevil/libargument/\nSkip with /noheader\n";
 		private string arguments;
 
 		/// <summary>
@@ -116,16 +116,14 @@ namespace libargument
 			var token = default(Token);
 			int read;
 
-			if ((read = reader.Peek()) != -1 && (char)read == '/')
+			// skip any leading '/' and whitespace
+			while ((read = reader.Peek()) != -1 && ((char)read == '/' | (char)read == ' '))
 				read = reader.Read();
 
 			token.Key = readParameterKey(reader);
 
-			read = reader.Read();
-			if (read != -1 && (char)read == '=')
-			{
+			if ((read = reader.Read()) != -1 && (char)read == '=')
 				token.Value = readParameterValue(reader);
-			}
 
 			return token;
 		}
