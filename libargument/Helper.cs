@@ -21,10 +21,5 @@ namespace libargument
 				return keyAttributes.First().Key;
 			return parameter.Name;
 		}
-
-		public static bool IsOptional(this ParameterInfo parameter)
-		{
-			return parameter.DefaultValue != null;
-		}
 	}
 }

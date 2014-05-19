@@ -50,20 +50,32 @@ namespace libargument
 					Key = parameter.GetKey(),
 					Type = parameter.ParameterType,
 					Abbreviations = parameter.GetAbbreviations(),
+					Optional = parameter.IsOptional,
 					DefaultValue = parameter.DefaultValue
 				}),
 				MethodInfo = item
 			}).ToList();
 
-			foreach (var item in tokenList)
+			var tokenQueue = new Queue<Token>(tokenList);
+
+			while (tokenQueue.Count > 0 && lookup.Count > 1)
 			{
-				lookup = lookup.Where(method => method.Parameter.Any(parameter => parameter.Key.Equals(item.Key, StringComparison.OrdinalIgnoreCase) | parameter.Abbreviations.Contains(item.Key, OrdinalIgnoreCaseEqualityComparer.Singleton))).ToList();
+				var token = tokenQueue.Dequeue();
+
+				lookup = lookup.Where(method =>
+					method.Parameter.Any(parameter =>
+						parameter.Key.Equals(token.Key, StringComparison.OrdinalIgnoreCase) |
+						parameter.Abbreviations.Contains(token.Key, OrdinalIgnoreCaseEqualityComparer.Singleton))).ToList();
 			}
 
 			if (lookup.Count == 0)
 				throw new InvalidOperationException(); // add descriptive message
 			if (lookup.Count > 1)
 				throw new InvalidOperationException(); // add descriptive message
+
+			var selectedMethod = lookup.Single();
+
+			// do mapping
 		}
 
 		/// <summary>
