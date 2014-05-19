@@ -8,7 +8,7 @@ using System.Text;
 namespace libargument
 {
 	[TestClass]
-	public sealed partial class Parser
+	public sealed partial class Parser<T>
 	{
 		[TestMethod]
 		public void TestInterpreteCharacterValueAppend()

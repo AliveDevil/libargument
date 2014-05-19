@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -8,15 +9,25 @@ namespace libargument
 	///
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
-	public sealed partial class Parser
+	public sealed partial class Parser<T>
 	{
 		private const string header = "Help powered by libargument {0}.\n© 2014 by AliveDevil\nhttps://github.com/alivedevil/libargument\nSkip with /noheader\n";
+		private string arguments;
 
 		/// <summary>
-		/// Default constructor. Does nothing at all.
+		/// Creates an Parser-object with Environment.CommandLine as argument.
 		/// </summary>
 		public Parser()
+			: this(Environment.CommandLine)
 		{
+		}
+
+		/// <summary>
+		/// Constructor for copying getting custom arguments.
+		/// </summary>
+		public Parser(string arguments)
+		{
+			this.arguments = arguments;
 		}
 
 		/// <summary>
@@ -44,15 +55,14 @@ namespace libargument
 		/// <returns>If creation of tokens was successful.</returns>
 		public bool Tokenize()
 		{
-			using (var memory = new MemoryStream(Encoding.Default.GetBytes(Environment.CommandLine), false))
+			var tokenList = new List<Token>();
+			using (var memory = new MemoryStream(Encoding.Default.GetBytes(arguments), false))
 			using (var reader = new StreamReader(memory))
 			{
 				int c;
 				while ((c = reader.Peek()) != -1)
 				{
-					if ((char)c == '/')
-					{
-					}
+					tokenList.Add(readParameter(reader));
 				}
 			}
 			return false;

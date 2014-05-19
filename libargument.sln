@@ -11,11 +11,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libargument", "libargument\libargument.csproj", "{C4359B07-9283-4231-B236-21B68FFC2D4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libargument-Tests", "libargument-Tests\libargument-Tests.csproj", "{36059383-FA11-4CB2-AB53-2F6D5B256B16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release NET35|Any CPU = Release NET35|Any CPU
 		Release NET40|Any CPU = Release NET40|Any CPU
+		Release|Any CPU = Release|Any CPU
 		Tests|Any CPU = Tests|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
@@ -25,8 +28,20 @@ Global
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release NET35|Any CPU.Build.0 = Release NET35|Any CPU
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release NET40|Any CPU.ActiveCfg = Release NET40|Any CPU
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release NET40|Any CPU.Build.0 = Release NET40|Any CPU
+		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release|Any CPU.ActiveCfg = Release NET40|Any CPU
+		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release|Any CPU.Build.0 = Release NET40|Any CPU
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Tests|Any CPU.ActiveCfg = Tests|Any CPU
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Tests|Any CPU.Build.0 = Tests|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release NET35|Any CPU.ActiveCfg = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release NET35|Any CPU.Build.0 = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release NET40|Any CPU.ActiveCfg = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release NET40|Any CPU.Build.0 = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Tests|Any CPU.ActiveCfg = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Tests|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
