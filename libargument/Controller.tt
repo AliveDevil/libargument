@@ -11,15 +11,14 @@ namespace libargument
 	{
 		private void registerDefaultConverter()
 		{
-		<#
+<#
 			foreach (var type in Types())
 			{
-			#>
-
-			RegisterTypeConverter<<#= type.Name #>>(new <#= type.Name #>Converter());
-			<#
+#>
+				RegisterTypeConverter<<#= type.Name #>>(new <#= type.Name #>Converter());
+<#
 			}
-		#>
+#>
 
 		}
 	}
