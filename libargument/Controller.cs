@@ -7,7 +7,7 @@ using System.Text;
 
 namespace libargument
 {
-	public abstract class Controller : IController
+	public abstract partial class Controller : IController
 	{
 		private const string header = "Help powered by libargument {0}.\n© 2014 by AliveDevil\nhttps://github.com/alivedevil/libargument/\nSkip with /noheader\n";
 		private readonly Dictionary<Type, ITypeConverter> typeConverter;
@@ -15,6 +15,7 @@ namespace libargument
 		public Controller()
 		{
 			typeConverter = new Dictionary<Type, ITypeConverter>();
+			registerDefaultConverter();
 		}
 
 		public void Help([Abbreviation("h"), Abbreviation("?")] bool help, bool noLogo = false)

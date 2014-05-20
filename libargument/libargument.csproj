@@ -50,15 +50,25 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Controller.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Controller.generated.cs</LastGenOutput>
+    </None>
     <None Include="Conversion\Converter.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Converter.cs</LastGenOutput>
+      <LastGenOutput>Converter.generated.cs</LastGenOutput>
     </None>
+    <None Include="GenericTypes.t4" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbbreviationAttribute.cs" />
     <Compile Include="Controller.cs" />
-    <Compile Include="Conversion\Converter.cs">
+    <Compile Include="Controller.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controller.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Conversion\Converter.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Converter.tt</DependentUpon>
