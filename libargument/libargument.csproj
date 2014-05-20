@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="AbbreviationAttribute.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Conversion\ITypeConverter.cs" />
+    <Compile Include="Exceptions\DuplicateKeyException.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="KeyAttribute.cs" />

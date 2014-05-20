@@ -58,7 +58,7 @@ namespace libargument
 
 			var tokenQueue = new Queue<Token>(tokenList);
 
-			while (tokenQueue.Count > 0 && lookup.Count > 1)
+			while (tokenQueue.Count > 0 & lookup.Count != 1)
 			{
 				var token = tokenQueue.Dequeue();
 
@@ -74,6 +74,7 @@ namespace libargument
 				throw new InvalidOperationException(); // add descriptive message
 
 			var selectedMethod = lookup.Single();
+			var objectSelect = selectedMethod.Parameter.Select(item => new { Value = item.DefaultValue, Type = item.Type });
 
 			// do mapping
 		}
