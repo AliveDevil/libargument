@@ -1,15 +1,38 @@
-﻿<#
-Type[] types = new Type[]
+﻿<#+
+static Type[] types = new Type[]
 {
-	typeof(Int16),
-	typeof(Int32),
-	typeof(Int64),
-	typeof(UInt16),
-	typeof(UInt32),
-	typeof(UInt64),
-	typeof(Single),
-	typeof(Double),
-	typeof(DateTime),
-	typeof(TimeSpan)
+	typeof(Int16), // 0
+	typeof(Int32), // 1
+	typeof(Int64), // 2
+	typeof(UInt16), // 3
+	typeof(UInt32), // 4
+	typeof(UInt64), // 5
+	typeof(Single), // 6
+	typeof(Double), // 7
+	typeof(DateTime), // 8
+	typeof(TimeSpan), // 9
+	typeof(Boolean) // 10
 };
+static Dictionary<Type, bool> generateClasses = new Dictionary<Type, bool>()
+{
+	{types[0], true},
+	{types[1], true},
+	{types[2], true},
+	{types[3], true},
+	{types[4], true},
+	{types[5], true},
+	{types[6], true},
+	{types[7], true},
+	{types[8], true},
+	{types[9], true},
+	{types[10], false}
+};
+public Type[] Types()
+{
+	return types;
+}
+public bool GenerateClass(Type type)
+{
+	return generateClasses[type];
+}
 #>

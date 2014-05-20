@@ -52,10 +52,10 @@ namespace libargument
 				{
 					Key = parameter.GetKey(),
 					Type = parameter.ParameterType,
-					Abbreviations = parameter.GetAbbreviations(),
+					Abbreviations = parameter.GetAbbreviations().ToArray(),
 					Optional = parameter.IsOptional,
 					DefaultValue = parameter.DefaultValue
-				}),
+				}).ToArray(),
 				MethodInfo = item
 			}).ToArray();
 
