@@ -41,7 +41,10 @@ namespace libargument
 			// prepare for bad code. Will be improved over time.
 
 			var targetType = typeof(T);
-			var methods = targetType.GetMethods(BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance).Where(item => item.ReturnType == typeof(void));
+			var methods = targetType
+				.GetMethods(BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
+				.Where(item => item.ReturnType == typeof(void));
+
 			var lookup = methods.Select(item => new
 			{
 				Key = item.Name,
@@ -75,7 +78,13 @@ namespace libargument
 
 			var controller = Activator.CreateInstance<T>();
 			var selectedMethod = lookup.Single();
-			var objectSelect = selectedMethod.Parameter.Select(item => new { Value = item.DefaultValue, Type = item.Type, TypeConverter = controller.ResolveType(item.Type), Optional = item.Optional });
+			var objectSelect = selectedMethod.Parameter.Select(item => new
+			{
+				Value = item.DefaultValue,
+				Type = item.Type,
+				TypeConverter = controller.ResolveType(item.Type),
+				Optional = item.Optional
+			});
 
 			// do mapping
 		}
@@ -103,7 +112,13 @@ namespace libargument
 		/// <param name="inQuote"></param>
 		/// <param name="nextEscape"></param>
 		/// <returns></returns>
-		private void interpreteCharacterValue(char character, char lastCharacter, ref bool inQuote, ref bool nextEscape, out bool append, out bool quit)
+		private void interpreteCharacterValue(
+			char character,
+			char lastCharacter,
+			ref bool inQuote,
+			ref bool nextEscape,
+			out bool append,
+			out bool quit)
 		{
 			//	do not append if
 			//		character is "
@@ -114,7 +129,11 @@ namespace libargument
 			//			and not
 			//				nextEscape
 			//				or inQuote
-			append = !((character == '"' & !nextEscape) | (character == '\\' & !nextEscape) | (character == ' ' & !(nextEscape | inQuote)));
+			append = !(
+						(character == '"' & !nextEscape) |
+						(character == '\\' & !nextEscape) |
+						(character == ' ' & !(nextEscape | inQuote))
+					);
 
 			//	quit if
 			//		character is "
@@ -123,7 +142,8 @@ namespace libargument
 			//			and not
 			//				inQuote
 			//				or nextEscape
-			quit = (character == '"' & inQuote & !nextEscape) | (character == ' ' & !(nextEscape | inQuote));
+			quit = (character == '"' & inQuote & !nextEscape) |
+				(character == ' ' & !(nextEscape | inQuote));
 
 			if (character == '"' & !inQuote & lastCharacter == '\0')
 				inQuote = true;
