@@ -15,7 +15,7 @@ namespace libargument.Conversion
 		public Boolean Read(string value)
 		{
 			Boolean o;
-			if (!Boolean.TryParse(value, out o) && string.IsNullOrWhiteSpace(value))
+			if (!Boolean.TryParse(value, out o) || string.IsNullOrWhiteSpace(value))
 				o = true;
 			return o;
 		}
