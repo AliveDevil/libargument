@@ -8,9 +8,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				Int16 o;
-				if (Int16.TryParse(value, out o))
-					return o;
-				return null;
+				return Int16.TryParse(value, out o) ? o : null;
 			}
 
 			public Int16 Read(string value)
@@ -36,9 +34,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				Int32 o;
-				if (Int32.TryParse(value, out o))
-					return o;
-				return null;
+				return Int32.TryParse(value, out o) ? o : null;
 			}
 
 			public Int32 Read(string value)
@@ -64,9 +60,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				Int64 o;
-				if (Int64.TryParse(value, out o))
-					return o;
-				return null;
+				return Int64.TryParse(value, out o) ? o : null;
 			}
 
 			public Int64 Read(string value)
@@ -92,9 +86,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				UInt16 o;
-				if (UInt16.TryParse(value, out o))
-					return o;
-				return null;
+				return UInt16.TryParse(value, out o) ? o : null;
 			}
 
 			public UInt16 Read(string value)
@@ -120,9 +112,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				UInt32 o;
-				if (UInt32.TryParse(value, out o))
-					return o;
-				return null;
+				return UInt32.TryParse(value, out o) ? o : null;
 			}
 
 			public UInt32 Read(string value)
@@ -148,9 +138,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				UInt64 o;
-				if (UInt64.TryParse(value, out o))
-					return o;
-				return null;
+				return UInt64.TryParse(value, out o) ? o : null;
 			}
 
 			public UInt64 Read(string value)
@@ -176,9 +164,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				Single o;
-				if (Single.TryParse(value, out o))
-					return o;
-				return null;
+				return Single.TryParse(value, out o) ? o : null;
 			}
 
 			public Single Read(string value)
@@ -204,9 +190,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				Double o;
-				if (Double.TryParse(value, out o))
-					return o;
-				return null;
+				return Double.TryParse(value, out o) ? o : null;
 			}
 
 			public Double Read(string value)
@@ -232,9 +216,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				DateTime o;
-				if (DateTime.TryParse(value, out o))
-					return o;
-				return null;
+				return DateTime.TryParse(value, out o) ? o : null;
 			}
 
 			public DateTime Read(string value)
@@ -260,9 +242,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				TimeSpan o;
-				if (TimeSpan.TryParse(value, out o))
-					return o;
-				return null;
+				return TimeSpan.TryParse(value, out o) ? o : null;
 			}
 
 			public TimeSpan Read(string value)

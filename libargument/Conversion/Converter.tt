@@ -1,8 +1,4 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Text" #>
-<#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
 using System;
 
@@ -31,9 +27,7 @@ namespace libargument.Conversion
 			object ITypeConverter.Read(string value)
 			{
 				<#= type.Name #> o;
-				if (<#= type.Name #>.TryParse(value, out o))
-					return o;
-				return null;
+				return <#= type.Name #>.TryParse(value, out o) ? o : null;
 			}
 
 			public <#= type.Name #> Read(string value)
