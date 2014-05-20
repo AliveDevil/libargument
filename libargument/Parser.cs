@@ -73,8 +73,9 @@ namespace libargument
 			if (lookup.Count > 1)
 				throw new InvalidOperationException(); // add descriptive message
 
+			var controller = Activator.CreateInstance<T>();
 			var selectedMethod = lookup.Single();
-			var objectSelect = selectedMethod.Parameter.Select(item => new { Value = item.DefaultValue, Type = item.Type });
+			var objectSelect = selectedMethod.Parameter.Select(item => new { Value = item.DefaultValue, Type = item.Type, TypeConverter = controller.ResolveType(item.Type) });
 
 			// do mapping
 		}

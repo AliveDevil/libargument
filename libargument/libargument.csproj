@@ -50,10 +50,19 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Conversion\Converter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Converter.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbbreviationAttribute.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Conversion\Converter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Converter.tt</DependentUpon>
+    </Compile>
     <Compile Include="Conversion\ITypeConverter.cs" />
     <Compile Include="Exceptions\DuplicateKeyException.cs" />
     <Compile Include="Helper.cs" />
@@ -72,6 +81,7 @@
     <Compile Include="ParserTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
