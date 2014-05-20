@@ -75,7 +75,7 @@ namespace libargument
 
 			var controller = Activator.CreateInstance<T>();
 			var selectedMethod = lookup.Single();
-			var objectSelect = selectedMethod.Parameter.Select(item => new { Value = item.DefaultValue, Type = item.Type, TypeConverter = controller.ResolveType(item.Type) });
+			var objectSelect = selectedMethod.Parameter.Select(item => new { Value = item.DefaultValue, Type = item.Type, TypeConverter = controller.ResolveType(item.Type), Optional = item.Optional });
 
 			// do mapping
 		}
