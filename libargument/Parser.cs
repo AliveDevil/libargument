@@ -54,23 +54,23 @@ namespace libargument
 					DefaultValue = parameter.DefaultValue
 				}),
 				MethodInfo = item
-			}).ToList();
+			}).ToArray();
 
 			var tokenQueue = new Queue<Token>(tokenList);
 
-			while (tokenQueue.Count > 0 & lookup.Count != 1)
+			while (tokenQueue.Count > 0 & lookup.Length != 1)
 			{
 				var token = tokenQueue.Dequeue();
 
 				lookup = lookup.Where(method =>
 					method.Parameter.Any(parameter =>
 						parameter.Key.Equals(token.Key, StringComparison.OrdinalIgnoreCase) |
-						parameter.Abbreviations.Contains(token.Key, OrdinalIgnoreCaseEqualityComparer.Singleton))).ToList();
+						parameter.Abbreviations.Contains(token.Key, OrdinalIgnoreCaseEqualityComparer.Singleton))).ToArray();
 			}
 
-			if (lookup.Count == 0)
+			if (lookup.Length == 0)
 				throw new InvalidOperationException(); // add descriptive message
-			if (lookup.Count > 1)
+			if (lookup.Length > 1)
 				throw new InvalidOperationException(); // add descriptive message
 
 			var controller = Activator.CreateInstance<T>();
