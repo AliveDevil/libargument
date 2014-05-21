@@ -21,5 +21,10 @@ namespace libargument
 				return keyAttributes.First().Key;
 			return parameter.Name;
 		}
+
+		public static bool IsParse(this MethodInfo method)
+		{
+			return method.GetCustomAttributes(false).OfType<ParseAttribute>().Any();
+		}
 	}
 }

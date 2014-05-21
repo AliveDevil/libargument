@@ -45,7 +45,7 @@ namespace libargument
 			var targetType = typeof(T);
 			var methods = targetType
 				.GetMethods(BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
-				.Where(item => item.ReturnType == typeof(void));
+				.Where(item => item.ReturnType == typeof(void) && item.IsParse());
 
 			var lookup = methods.Select(item => new Method(item)).ToArray();
 

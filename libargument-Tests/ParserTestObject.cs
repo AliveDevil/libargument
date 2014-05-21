@@ -9,6 +9,7 @@ namespace libargument_Tests
 {
 	public class ParserTestObject : Controller
 	{
+		[Parse]
 		public void Test([Key("switch"), Abbreviation("s")] bool switchParameter)
 		{
 		}

@@ -18,6 +18,7 @@ namespace libargument
 			registerDefaultConverter();
 		}
 
+		[Parse]
 		public void Help([Abbreviation("h"), Abbreviation("?")] bool help, bool noLogo = false)
 		{
 			if (!noLogo) PrintHeader();

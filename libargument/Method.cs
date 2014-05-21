@@ -16,7 +16,7 @@ namespace libargument
 		public Method(MethodInfo method)
 		{
 			Key = method.Name;
-			Parameter = method.GetParameters().Select(parameter => new Parameter(parameter)).List();
+			Parameter = method.GetParameters().Select(parameter => new Parameter(parameter)).ToList();
 			MethodInfo = method;
 			Token = default(Token);
 		}

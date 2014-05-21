@@ -82,6 +82,7 @@
     <Compile Include="Method.cs" />
     <Compile Include="OrdinalIgnoreCaseEqualityComparer.cs" />
     <Compile Include="Parameter.cs" />
+    <Compile Include="ParseAttribute.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Token.cs" />
