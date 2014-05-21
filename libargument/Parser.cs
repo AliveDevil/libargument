@@ -14,6 +14,7 @@ namespace libargument
 	public sealed partial class Parser<T> where T : IController
 	{
 		private string arguments;
+		private T controller;
 		private List<Token> tokenList;
 
 		/// <summary>
@@ -29,6 +30,7 @@ namespace libargument
 		/// </summary>
 		public Parser(string arguments)
 		{
+			this.controller = Activator.CreateInstance<T>();
 			this.arguments = arguments;
 		}
 
@@ -76,7 +78,6 @@ namespace libargument
 			if (lookup.Length > 1)
 				throw new InvalidOperationException(); // add descriptive message
 
-			var controller = Activator.CreateInstance<T>();
 			var selectedMethod = lookup.Single();
 			var objectSelect = selectedMethod.Parameter.Select(item => new
 			{
