@@ -15,8 +15,10 @@ namespace libargument
 	{
 		private string arguments;
 		private T controller;
+		private Type targetType;
 		private List<Token> tokenList;
 
+		/// Parser()
 		/// <summary>
 		/// Creates an Parser-object with Environment.CommandLine as argument.
 		/// </summary>
@@ -25,15 +27,18 @@ namespace libargument
 		{
 		}
 
+		/// Parser(string)
 		/// <summary>
 		/// Constructor for copying getting custom arguments.
 		/// </summary>
 		public Parser(string arguments)
 		{
+			this.targetType = typeof(T);
 			this.controller = Activator.CreateInstance<T>();
 			this.arguments = arguments;
 		}
 
+		/// Match()
 		/// <summary>
 		///
 		/// </summary>
@@ -42,7 +47,6 @@ namespace libargument
 		{
 			// prepare for bad code. Will be improved over time.
 
-			var targetType = typeof(T);
 			var methods = targetType
 				.GetMethods(BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
 				.Where(item => item.ReturnType == typeof(void) && item.IsParse());
@@ -80,6 +84,7 @@ namespace libargument
 			// do mapping
 		}
 
+		/// Tokenize()
 		/// <summary>
 		/// Reads Environment.CommandLine and prepares tokens.
 		/// </summary>
@@ -95,6 +100,27 @@ namespace libargument
 					tokenList.Add(readParameter(reader));
 		}
 
+		/// buildMethodInfo()
+		/// <summary>
+		///
+		/// </summary>
+		private void buildMethodInfo()
+		{
+			var methods = targetType
+				.GetMethods(BindingFlags.Public | BindingFlags.Instance)
+				.Where(method => method.ReturnType == typeof(void) & method.IsParse());
+
+			foreach (var method in methods)
+			{
+			}
+		}
+
+		/// doThings(IEnumerable[MethodInfo])
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="methods"></param>
+		/// <returns></returns>
 		private IEnumerable<Method> doThings(IEnumerable<MethodInfo> methods)
 		{
 			var lookup = new Dictionary<MethodInfo, Method>();
@@ -106,6 +132,7 @@ namespace libargument
 			return lookup.Values;
 		}
 
+		/// interpreteCharacterValue(char, char, bool, bool, bool, bool)
 		/// <summary>
 		///
 		/// </summary>
