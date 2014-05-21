@@ -47,19 +47,7 @@ namespace libargument
 				.GetMethods(BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
 				.Where(item => item.ReturnType == typeof(void));
 
-			var lookup = methods.Select(item => new
-			{
-				Key = item.Name,
-				Parameter = item.GetParameters().Select(parameter => new
-				{
-					Key = parameter.GetKey(),
-					Type = parameter.ParameterType,
-					Abbreviations = parameter.GetAbbreviations().ToArray(),
-					Optional = parameter.IsOptional,
-					DefaultValue = parameter.DefaultValue
-				}).ToArray(),
-				MethodInfo = item
-			}).ToArray();
+			var lookup = methods.Select(item => new Method(item)).ToArray();
 
 			var tokenQueue = new Queue<Token>(tokenList);
 
@@ -70,7 +58,9 @@ namespace libargument
 				lookup = lookup.Where(method =>
 					method.Parameter.Any(parameter =>
 						parameter.Key.Equals(token.Key, StringComparison.OrdinalIgnoreCase) |
-						parameter.Abbreviations.Contains(token.Key, OrdinalIgnoreCaseEqualityComparer.Singleton))).ToArray();
+						parameter.Abbreviations.Contains(token.Key, OrdinalIgnoreCaseEqualityComparer.Singleton)))
+				.Select(item => { item.Token = token; return item; })
+				.ToArray();
 			}
 
 			if (lookup.Length == 0)
@@ -84,7 +74,7 @@ namespace libargument
 				Value = item.DefaultValue,
 				Type = item.Type,
 				TypeConverter = controller.ResolveType(item.Type),
-				Optional = item.Optional
+				Optional = item.Optional,
 			});
 
 			// do mapping
@@ -103,6 +93,17 @@ namespace libargument
 			using (var reader = new StreamReader(memory))
 				while (reader.Peek() != -1)
 					tokenList.Add(readParameter(reader));
+		}
+
+		private IEnumerable<Method> doThings(IEnumerable<MethodInfo> methods)
+		{
+			var lookup = new Dictionary<MethodInfo, Method>();
+
+			foreach (var method in methods)
+			{
+			}
+
+			return lookup.Values;
 		}
 
 		/// <summary>
