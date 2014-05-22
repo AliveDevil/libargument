@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -10,6 +11,7 @@ namespace libargument
 	{
 		public List<string> Abbreviations;
 		public object DefaultValue;
+		public bool IsIEnumerable;
 		public bool IsOptional;
 		public string Key;
 		public List<Token> Token;
@@ -18,7 +20,8 @@ namespace libargument
 		public Parameter(ParameterInfo parameter)
 		{
 			Key = parameter.GetKey();
-			Type = parameter.ParameterType;
+			IsIEnumerable = parameter.ParameterType == typeof(IEnumerable);
+			Type = parameter.GetParameterType();
 			Abbreviations = parameter.GetAbbreviations().ToList();
 			IsOptional = parameter.IsOptional;
 			DefaultValue = parameter.DefaultValue;

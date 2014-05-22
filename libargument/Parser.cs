@@ -61,6 +61,18 @@ namespace libargument
 				throw new EquivocalActionsException();
 
 			var selectedMethod = methodInfos[0];
+			var objectParameter = new List<object>();
+
+			foreach (var item in selectedMethod.Parameter)
+			{
+				var converter = controller.ResolveType(item.Type);
+				if (item.IsIEnumerable)
+					objectParameter.Add(Assembling.ResolveCollection(converter, item));
+				else
+					objectParameter.Add(Assembling.ResolveValue(converter, item));
+			}
+
+			selectedMethod.MethodInfo.Invoke(controller, objectParameter.ToArray());
 
 			//var selectedMethod = lookup.Single();
 			//var objectSelect = selectedMethod.Parameter.Select(item => new

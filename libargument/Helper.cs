@@ -1,4 +1,6 @@
 ﻿using libargument.Attributes;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -21,6 +23,13 @@ namespace libargument
 			if (keyAttributes.Any())
 				return keyAttributes.First().Key;
 			return parameter.Name;
+		}
+
+		public static Type GetParameterType(this ParameterInfo parameter)
+		{
+			if (parameter.ParameterType == typeof(IEnumerable))
+				return parameter.ParameterType.GetGenericArguments()[0];
+			return parameter.ParameterType;
 		}
 
 		public static bool HasKey(this ICollection<Parameter> parameter, Token token)

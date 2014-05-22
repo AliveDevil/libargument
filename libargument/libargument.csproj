@@ -61,6 +61,7 @@
     <None Include="GenericTypes.t4" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assembling.cs" />
     <Compile Include="Attributes\AbbreviationAttribute.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Controller.generated.cs">
