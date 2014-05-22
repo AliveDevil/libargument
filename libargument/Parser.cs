@@ -20,15 +20,6 @@ namespace libargument
 		private Type targetType;
 		private List<Token> tokenList;
 
-		/// Parser()
-		/// <summary>
-		/// Creates an Parser-object with Environment.CommandLine as argument.
-		/// </summary>
-		public Parser()
-			: this(Environment.CommandLine)
-		{
-		}
-
 		/// Parser(string)
 		/// <summary>
 		/// Constructor for copying getting custom arguments.
