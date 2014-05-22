@@ -46,8 +46,6 @@ namespace libargument
 		/// <returns></returns>
 		public void Match()
 		{
-			// prepare for bad code. Will be improved over time.
-
 			// forward declaration.
 			// don't know why I do this .. maybe OCD.
 			var methodInfos = default(List<Method>);
@@ -73,17 +71,6 @@ namespace libargument
 			}
 
 			selectedMethod.MethodInfo.Invoke(controller, objectParameter.ToArray());
-
-			//var selectedMethod = lookup.Single();
-			//var objectSelect = selectedMethod.Parameter.Select(item => new
-			//{
-			//	Value = item.DefaultValue,
-			//	Type = item.Type,
-			//	TypeConverter = controller.ResolveType(item.Type),
-			//	Optional = item.IsOptional,
-			//});
-
-			// do mapping
 		}
 
 		/// Tokenize()
