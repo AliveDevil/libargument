@@ -61,7 +61,7 @@
     <None Include="GenericTypes.t4" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbbreviationAttribute.cs" />
+    <Compile Include="Attributes\AbbreviationAttribute.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Controller.generated.cs">
       <AutoGen>True</AutoGen>
@@ -78,11 +78,11 @@
     <Compile Include="Exceptions\DuplicateKeyException.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IController.cs" />
-    <Compile Include="KeyAttribute.cs" />
+    <Compile Include="Attributes\KeyAttribute.cs" />
     <Compile Include="Method.cs" />
     <Compile Include="OrdinalIgnoreCaseEqualityComparer.cs" />
     <Compile Include="Parameter.cs" />
-    <Compile Include="ParseAttribute.cs" />
+    <Compile Include="Attributes\ParseAttribute.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Token.cs" />

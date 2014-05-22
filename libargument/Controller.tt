@@ -9,13 +9,13 @@ namespace libargument
 {
 	public abstract partial class Controller
 	{
-		private void registerDefaultConverter()
+		private void registerDefaultConverter(Type targetType)
 		{
 <#
 			foreach (var type in Types())
 			{
 #>
-				RegisterTypeConverter<<#= type.Name #>>(new <#= type.Name #>Converter());
+				RegisterTypeConverter<<#= type.Name #>>(new <#= type.Name #>Converter(targetType));
 <#
 			}
 #>

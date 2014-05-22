@@ -14,6 +14,13 @@ foreach (var type in Types())
 #>
 	public sealed partial class <#= type.Name #>Converter : ITypeConverter<<#= type.Name #>>
 	{
+		private IController target;
+
+		public <#= type.Name #>Converter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			<#= type.Name #> o;

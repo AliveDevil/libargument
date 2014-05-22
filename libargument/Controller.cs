@@ -1,4 +1,5 @@
-﻿using libargument.Conversion;
+﻿using libargument.Attributes;
+using libargument.Conversion;
 using libargument.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace libargument
 		public Controller()
 		{
 			typeConverter = new Dictionary<Type, ITypeConverter>();
-			registerDefaultConverter();
+			registerDefaultConverter(this);
 		}
 
 		[Parse]

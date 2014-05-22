@@ -7,6 +7,13 @@ namespace libargument.Conversion
 {
 	public class BooleanConverter : ITypeConverter<Boolean>
 	{
+		private IController target;
+
+		public BooleanConverter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			return Read(value);

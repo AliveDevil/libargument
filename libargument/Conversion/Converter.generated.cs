@@ -4,6 +4,13 @@ namespace libargument.Conversion
 {
 	public sealed partial class Int16Converter : ITypeConverter<Int16>
 	{
+		private IController target;
+
+		public Int16Converter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			Int16 o;
@@ -29,6 +36,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class Int32Converter : ITypeConverter<Int32>
 	{
+		private IController target;
+
+		public Int32Converter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			Int32 o;
@@ -54,6 +68,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class Int64Converter : ITypeConverter<Int64>
 	{
+		private IController target;
+
+		public Int64Converter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			Int64 o;
@@ -79,6 +100,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class UInt16Converter : ITypeConverter<UInt16>
 	{
+		private IController target;
+
+		public UInt16Converter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			UInt16 o;
@@ -104,6 +132,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class UInt32Converter : ITypeConverter<UInt32>
 	{
+		private IController target;
+
+		public UInt32Converter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			UInt32 o;
@@ -129,6 +164,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class UInt64Converter : ITypeConverter<UInt64>
 	{
+		private IController target;
+
+		public UInt64Converter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			UInt64 o;
@@ -154,6 +196,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class SingleConverter : ITypeConverter<Single>
 	{
+		private IController target;
+
+		public SingleConverter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			Single o;
@@ -179,6 +228,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class DoubleConverter : ITypeConverter<Double>
 	{
+		private IController target;
+
+		public DoubleConverter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			Double o;
@@ -204,6 +260,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class DateTimeConverter : ITypeConverter<DateTime>
 	{
+		private IController target;
+
+		public DateTimeConverter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			DateTime o;
@@ -229,6 +292,13 @@ namespace libargument.Conversion
 	}
 	public sealed partial class TimeSpanConverter : ITypeConverter<TimeSpan>
 	{
+		private IController target;
+
+		public TimeSpanConverter(IController target)
+		{
+			this.target = target;
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			TimeSpan o;

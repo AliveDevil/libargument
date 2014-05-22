@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace libargument
+namespace libargument.Attributes
 {
 	[AttributeUsage(AttributeTargets.Parameter, Inherited = false, AllowMultiple = false)]
 	public sealed class KeyAttribute : Attribute
