@@ -17,6 +17,12 @@ namespace libargument.Conversion
 			return Int16.TryParse(value, out o) ? (Object)o : null;
 		}
 
+		public bool CanRead(string value)
+		{
+			Int16 o;
+			return Int16.TryParse(value, out o);
+		}
+
 		public Int16 Read(string value)
 		{
 			return Int16.Parse(value);
@@ -47,6 +53,12 @@ namespace libargument.Conversion
 		{
 			Int32 o;
 			return Int32.TryParse(value, out o) ? (Object)o : null;
+		}
+
+		public bool CanRead(string value)
+		{
+			Int32 o;
+			return Int32.TryParse(value, out o);
 		}
 
 		public Int32 Read(string value)
@@ -81,6 +93,12 @@ namespace libargument.Conversion
 			return Int64.TryParse(value, out o) ? (Object)o : null;
 		}
 
+		public bool CanRead(string value)
+		{
+			Int64 o;
+			return Int64.TryParse(value, out o);
+		}
+
 		public Int64 Read(string value)
 		{
 			return Int64.Parse(value);
@@ -111,6 +129,12 @@ namespace libargument.Conversion
 		{
 			UInt16 o;
 			return UInt16.TryParse(value, out o) ? (Object)o : null;
+		}
+
+		public bool CanRead(string value)
+		{
+			UInt16 o;
+			return UInt16.TryParse(value, out o);
 		}
 
 		public UInt16 Read(string value)
@@ -145,6 +169,12 @@ namespace libargument.Conversion
 			return UInt32.TryParse(value, out o) ? (Object)o : null;
 		}
 
+		public bool CanRead(string value)
+		{
+			UInt32 o;
+			return UInt32.TryParse(value, out o);
+		}
+
 		public UInt32 Read(string value)
 		{
 			return UInt32.Parse(value);
@@ -175,6 +205,12 @@ namespace libargument.Conversion
 		{
 			UInt64 o;
 			return UInt64.TryParse(value, out o) ? (Object)o : null;
+		}
+
+		public bool CanRead(string value)
+		{
+			UInt64 o;
+			return UInt64.TryParse(value, out o);
 		}
 
 		public UInt64 Read(string value)
@@ -209,6 +245,12 @@ namespace libargument.Conversion
 			return Single.TryParse(value, out o) ? (Object)o : null;
 		}
 
+		public bool CanRead(string value)
+		{
+			Single o;
+			return Single.TryParse(value, out o);
+		}
+
 		public Single Read(string value)
 		{
 			return Single.Parse(value);
@@ -239,6 +281,12 @@ namespace libargument.Conversion
 		{
 			Double o;
 			return Double.TryParse(value, out o) ? (Object)o : null;
+		}
+
+		public bool CanRead(string value)
+		{
+			Double o;
+			return Double.TryParse(value, out o);
 		}
 
 		public Double Read(string value)
@@ -273,6 +321,12 @@ namespace libargument.Conversion
 			return DateTime.TryParse(value, out o) ? (Object)o : null;
 		}
 
+		public bool CanRead(string value)
+		{
+			DateTime o;
+			return DateTime.TryParse(value, out o);
+		}
+
 		public DateTime Read(string value)
 		{
 			return DateTime.Parse(value);
@@ -303,6 +357,12 @@ namespace libargument.Conversion
 		{
 			TimeSpan o;
 			return TimeSpan.TryParse(value, out o) ? (Object)o : null;
+		}
+
+		public bool CanRead(string value)
+		{
+			TimeSpan o;
+			return TimeSpan.TryParse(value, out o);
 		}
 
 		public TimeSpan Read(string value)

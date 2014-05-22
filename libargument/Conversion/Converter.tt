@@ -27,6 +27,12 @@ foreach (var type in Types())
 			return <#= type.Name #>.TryParse(value, out o) ? (Object)o : null;
 		}
 
+		public bool CanRead(string value)
+		{
+			<#= type.Name #> o;
+			return <#= type.Name #>.TryParse(value, out o);
+		}
+
 		public <#= type.Name #> Read(string value)
 		{
 			return <#= type.Name #>.Parse(value);

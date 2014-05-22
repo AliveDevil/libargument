@@ -7,6 +7,8 @@ namespace libargument.Conversion
 {
 	public interface ITypeConverter
 	{
+		bool CanRead(string value);
+
 		object Read(string value);
 
 		string Write(object value);

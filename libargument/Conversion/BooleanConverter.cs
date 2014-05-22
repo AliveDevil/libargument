@@ -14,6 +14,12 @@ namespace libargument.Conversion
 			this.target = target;
 		}
 
+		public bool CanRead(string value)
+		{
+			Boolean o;
+			return Boolean.TryParse(value, out o);
+		}
+
 		object ITypeConverter.Read(string value)
 		{
 			return Read(value);
