@@ -11,7 +11,8 @@ static Type[] types = new Type[]
 	typeof(Double), // 7
 	typeof(DateTime), // 8
 	typeof(TimeSpan), // 9
-	typeof(Boolean) // 10
+	typeof(Boolean), // 10
+	typeof(String), // 11
 };
 static Dictionary<Type, bool> generateClasses = new Dictionary<Type, bool>()
 {
@@ -25,7 +26,8 @@ static Dictionary<Type, bool> generateClasses = new Dictionary<Type, bool>()
 	{types[7], true},
 	{types[8], true},
 	{types[9], true},
-	{types[10], false}
+	{types[10], false},
+	{types[11], false}
 };
 public Type[] Types()
 {

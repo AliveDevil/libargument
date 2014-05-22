@@ -27,8 +27,8 @@ namespace libargument
 
 		public static Type GetParameterType(this ParameterInfo parameter)
 		{
-			if (parameter.ParameterType == typeof(IEnumerable))
-				return parameter.ParameterType.GetGenericArguments()[0];
+			if (parameter.ParameterType.IsArray)
+				return parameter.ParameterType.GetElementType();
 			return parameter.ParameterType;
 		}
 

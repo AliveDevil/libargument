@@ -11,7 +11,8 @@ namespace libargument
 	{
 		public List<string> Abbreviations;
 		public object DefaultValue;
-		public bool IsIEnumerable;
+		public ParameterInfo Info;
+		public bool IsArray;
 		public bool IsOptional;
 		public string Key;
 		public List<Token> Token;
@@ -19,12 +20,13 @@ namespace libargument
 
 		public Parameter(ParameterInfo parameter)
 		{
-			Key = parameter.GetKey();
-			IsIEnumerable = parameter.ParameterType == typeof(IEnumerable);
-			Type = parameter.GetParameterType();
-			Abbreviations = parameter.GetAbbreviations().ToList();
-			IsOptional = parameter.IsOptional;
-			DefaultValue = parameter.DefaultValue;
+			Info = parameter;
+			Key = Info.GetKey();
+			IsArray = Info.ParameterType.IsArray;
+			Type = Info.GetParameterType();
+			Abbreviations = Info.GetAbbreviations().ToList();
+			IsOptional = Info.IsOptional;
+			DefaultValue = Info.DefaultValue;
 			Token = new List<Token>();
 		}
 

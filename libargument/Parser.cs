@@ -1,4 +1,5 @@
-﻿using libargument.Exceptions;
+﻿using libargument.Conversion;
+using libargument.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -75,7 +76,7 @@ namespace libargument
 			foreach (var item in selectedMethod.Parameter)
 			{
 				var converter = controller.ResolveType(item.Type);
-				if (item.IsIEnumerable)
+				if (item.IsArray)
 					objectParameter.Add(Assembling.ResolveCollection(converter, item));
 				else
 					objectParameter.Add(Assembling.ResolveValue(converter, item));

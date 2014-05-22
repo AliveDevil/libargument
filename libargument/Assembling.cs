@@ -9,20 +9,28 @@ namespace libargument
 {
 	internal static class Assembling
 	{
-		public static IEnumerable ResolveCollection(ITypeConverter converter, Parameter parameter)
+		public static object ResolveCollection(ITypeConverter converter, Parameter parameter)
 		{
 			if (parameter.Token.Count == 0 && parameter.IsOptional)
-				return parameter.DefaultValue as IEnumerable;
+				return parameter.DefaultValue;
 
-			var list = new List<object>();
+			var list = new ArrayList();
 
 			foreach (var item in parameter.Token)
 			{
 				if (item.IsDefined && item.HasValue && converter.CanRead(item.Value))
-					list.Add(converter.Read(item.Value));
+					list.Add(Convert.ChangeType(converter.Read(item.Value), parameter.Type));
 			}
 
-			return list;
+			var type = parameter.Type.MakeArrayType();
+			var array = Activator.CreateInstance(type, new object[] { list.Count });
+
+			for (int i = 0; i < list.Count; i++)
+			{
+				type.GetMethod("Set").Invoke(array, new object[] { i, list[i] });
+			}
+
+			return array;
 		}
 
 		public static object ResolveValue(ITypeConverter converter, Parameter parameter)

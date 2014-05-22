@@ -17,6 +17,9 @@ namespace libargument_Tests
 		public int DuplicateTest2([Key("duplicate")] bool duplicate) { return 2; }
 
 		[Parse]
+		public int IEnumerable([Key("test")] string[] test) { return test.Count(); }
+
+		[Parse]
 		public int Test([Key("switch"), Abbreviation("s")] bool switchParameter) { return 7357; }
 
 		[Parse]
