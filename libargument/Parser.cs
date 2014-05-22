@@ -1,4 +1,5 @@
-﻿using System;
+﻿using libargument.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -55,9 +56,11 @@ namespace libargument
 			strikeMethods(tokenList, ref methodInfos);
 
 			if (methodInfos.Count == 0)
-				throw new InvalidOperationException(); // add descriptive message
+				throw new ActionNotFoundException();
 			if (methodInfos.Count > 1)
-				throw new InvalidOperationException(); // add descriptive message
+				throw new EquivocalActionsException();
+
+			var selectedMethod = methodInfos[0];
 
 			//var selectedMethod = lookup.Single();
 			//var objectSelect = selectedMethod.Parameter.Select(item => new

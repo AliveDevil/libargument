@@ -7,23 +7,23 @@ using System.Text;
 namespace libargument.Exceptions
 {
 	[Serializable]
-	public class DuplicateKeyException : Exception
+	public class ActionNotFoundException : Exception
 	{
-		public DuplicateKeyException()
+		public ActionNotFoundException()
 		{
 		}
 
-		public DuplicateKeyException(string message)
+		public ActionNotFoundException(string message)
 			: base(message)
 		{
 		}
 
-		public DuplicateKeyException(string message, Exception inner)
+		public ActionNotFoundException(string message, Exception inner)
 			: base(message, inner)
 		{
 		}
 
-		protected DuplicateKeyException(
+		protected ActionNotFoundException(
 		  SerializationInfo info,
 		  StreamingContext context)
 			: base(info, context) { }

@@ -7,23 +7,24 @@ using System.Text;
 namespace libargument.Exceptions
 {
 	[Serializable]
-	public class DuplicateKeyException : Exception
+	// any english speaking people: is that name right?
+	public class EquivocalActionsException : Exception
 	{
-		public DuplicateKeyException()
+		public EquivocalActionsException()
 		{
 		}
 
-		public DuplicateKeyException(string message)
+		public EquivocalActionsException(string message)
 			: base(message)
 		{
 		}
 
-		public DuplicateKeyException(string message, Exception inner)
+		public EquivocalActionsException(string message, Exception inner)
 			: base(message, inner)
 		{
 		}
 
-		protected DuplicateKeyException(
+		protected EquivocalActionsException(
 		  SerializationInfo info,
 		  StreamingContext context)
 			: base(info, context) { }
