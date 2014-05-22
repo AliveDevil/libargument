@@ -20,9 +20,9 @@ namespace libargument
 		}
 
 		[Parse]
-		public void Help([Abbreviation("h"), Abbreviation("?")] bool help, bool noLogo = false)
+		public void Help([Abbreviation("h"), Abbreviation("?")] bool help, bool noHeader = false)
 		{
-			if (!noLogo) PrintHeader();
+			if (!noHeader) PrintHeader();
 		}
 
 		public void Help()

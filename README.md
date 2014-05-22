@@ -2,12 +2,15 @@
 Simple library for parsing command line arguments in .NET.
 
 ## Progress
-Thinking about how the library should behave. Writing down some structures and use cases.
+Finished creating first two bullet points on Plans.  
+Going to implement the Help-provider in near future.
 
 ## Plans
-* execute different methods based on selected switches (behave like PowerShell script)
-* match first action
+* execute different methods based on selected switches (behave like PowerShell script) (implemented)
+* match first action (implemented)
 * ~~Autocomplete~~ (this requires a custom written command prompt. Won't do that)
+* providing Help (work in progress)
+* Documentation
 
 ## Thoughts
 ```
@@ -15,7 +18,10 @@ Thinking about how the library should behave. Writing down some structures and u
 /switch1
 /switch2 /required=value </optional=value, "Default">
 /switch3 /list=value1 /list=value2 /list=value3
-/switch4 /parameter="value with whitespace" "/parameter=value with whitespace"
+/switch4
+ /parameter="value with whitespace"
+ /parameter=value\ with\ escaped\ whitespace
+ /parameter="value with escaped \"double quotes\""
 ```
 
 Escape-sequences  
