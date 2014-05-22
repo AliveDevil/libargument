@@ -12,6 +12,7 @@ namespace libargument
 		public object DefaultValue;
 		public string Key;
 		public bool Optional;
+		public Token Token;
 		public Type Type;
 
 		public Parameter(ParameterInfo parameter)
@@ -21,6 +22,12 @@ namespace libargument
 			Abbreviations = parameter.GetAbbreviations().ToList();
 			Optional = parameter.IsOptional;
 			DefaultValue = parameter.DefaultValue;
+			Token = default(Token);
+		}
+
+		public bool IsKnown(string key)
+		{
+			return Key.Equals(key, StringComparison.OrdinalIgnoreCase) | Abbreviations.Contains(key, OrdinalIgnoreCaseEqualityComparer.Singleton);
 		}
 	}
 }

@@ -11,14 +11,12 @@ namespace libargument
 		public string Key;
 		public MethodInfo MethodInfo;
 		public List<Parameter> Parameter;
-		public Token Token;
 
 		public Method(MethodInfo method)
 		{
 			Key = method.Name;
 			Parameter = method.GetParameters().Select(parameter => new Parameter(parameter)).ToList();
 			MethodInfo = method;
-			Token = default(Token);
 		}
 	}
 }

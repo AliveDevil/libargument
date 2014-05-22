@@ -47,6 +47,8 @@ namespace libargument
 		{
 			// prepare for bad code. Will be improved over time.
 
+			var methodInfos = buildMethodInfo();
+
 			var methods = targetType
 				.GetMethods(BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
 				.Where(item => item.ReturnType == typeof(void) && item.IsParse());
@@ -63,7 +65,6 @@ namespace libargument
 					method.Parameter.Any(parameter =>
 						parameter.Key.Equals(token.Key, StringComparison.OrdinalIgnoreCase) |
 						parameter.Abbreviations.Contains(token.Key, OrdinalIgnoreCaseEqualityComparer.Singleton)))
-				.Select(item => { item.Token = token; return item; })
 				.ToArray();
 			}
 
@@ -104,15 +105,13 @@ namespace libargument
 		/// <summary>
 		///
 		/// </summary>
-		private void buildMethodInfo()
+		private List<Method> buildMethodInfo()
 		{
-			var methods = targetType
+			return targetType
 				.GetMethods(BindingFlags.Public | BindingFlags.Instance)
-				.Where(method => method.ReturnType == typeof(void) & method.IsParse());
-
-			foreach (var method in methods)
-			{
-			}
+				.Where(method => method.ReturnType == typeof(void) & method.IsParse())
+				.Select(method => new Method(method))
+				.ToList();
 		}
 
 		/// doThings(IEnumerable[MethodInfo])
