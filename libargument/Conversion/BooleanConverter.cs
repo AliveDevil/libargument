@@ -28,7 +28,11 @@ namespace libargument.Conversion
 		public Boolean Read(string value)
 		{
 			Boolean o;
+#if NET35
+			if (!Boolean.TryParse(value, out o) || string.IsNullOrEmpty(value.Trim()))
+#else
 			if (!Boolean.TryParse(value, out o) || string.IsNullOrWhiteSpace(value))
+#endif
 				o = true;
 			return o;
 		}
