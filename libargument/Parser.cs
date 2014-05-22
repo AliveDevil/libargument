@@ -76,6 +76,8 @@ namespace libargument
 			try
 			{
 				var retVal = selectedMethod.MethodInfo.Invoke(controller, objectParameter.ToArray());
+				if (retVal == null)
+					return default(T);
 				if (retVal is T)
 					return (T)retVal;
 				throw new InvalidCastException();
