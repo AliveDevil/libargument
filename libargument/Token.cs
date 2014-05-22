@@ -18,6 +18,8 @@ namespace libargument
 
 		public bool HasValue { get { return Value != null; } }
 
+		public bool IsDefined { get { return Key != null; } }
+
 		public bool IsSwitch { get { return Value == null; } }
 
 		public override string ToString()

@@ -23,6 +23,21 @@ namespace libargument
 			return parameter.Name;
 		}
 
+		public static bool HasKey(this ICollection<Parameter> parameter, Token token)
+		{
+			bool anyKnown = false;
+			foreach (var p in parameter)
+			{
+				if (p.IsKnown(token.Key))
+				{
+					anyKnown = true;
+					if (!p.Token.Contains(token))
+						p.Token.Add(token);
+				}
+			}
+			return anyKnown;
+		}
+
 		public static bool IsParse(this MethodInfo method)
 		{
 			return method.GetCustomAttributes(false).OfType<ParseAttribute>().Any();

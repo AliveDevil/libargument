@@ -47,40 +47,26 @@ namespace libargument
 		{
 			// prepare for bad code. Will be improved over time.
 
-			var methodInfos = buildMethodInfo();
+			// forward declaration.
+			// don't know why I do this .. maybe OCD.
+			var methodInfos = default(List<Method>);
 
-			var methods = targetType
-				.GetMethods(BindingFlags.Public | BindingFlags.FlattenHierarchy | BindingFlags.Instance)
-				.Where(item => item.ReturnType == typeof(void) && item.IsParse());
+			buildMethodInfo(ref methodInfos);
+			strikeMethods(tokenList, ref methodInfos);
 
-			var lookup = methods.Select(item => new Method(item)).ToArray();
-
-			var tokenQueue = new Queue<Token>(tokenList);
-
-			while (tokenQueue.Count > 0 & lookup.Length != 1)
-			{
-				var token = tokenQueue.Dequeue();
-
-				lookup = lookup.Where(method =>
-					method.Parameter.Any(parameter =>
-						parameter.Key.Equals(token.Key, StringComparison.OrdinalIgnoreCase) |
-						parameter.Abbreviations.Contains(token.Key, OrdinalIgnoreCaseEqualityComparer.Singleton)))
-				.ToArray();
-			}
-
-			if (lookup.Length == 0)
+			if (methodInfos.Count == 0)
 				throw new InvalidOperationException(); // add descriptive message
-			if (lookup.Length > 1)
+			if (methodInfos.Count > 1)
 				throw new InvalidOperationException(); // add descriptive message
 
-			var selectedMethod = lookup.Single();
-			var objectSelect = selectedMethod.Parameter.Select(item => new
-			{
-				Value = item.DefaultValue,
-				Type = item.Type,
-				TypeConverter = controller.ResolveType(item.Type),
-				Optional = item.Optional,
-			});
+			//var selectedMethod = lookup.Single();
+			//var objectSelect = selectedMethod.Parameter.Select(item => new
+			//{
+			//	Value = item.DefaultValue,
+			//	Type = item.Type,
+			//	TypeConverter = controller.ResolveType(item.Type),
+			//	Optional = item.IsOptional,
+			//});
 
 			// do mapping
 		}
@@ -105,30 +91,13 @@ namespace libargument
 		/// <summary>
 		///
 		/// </summary>
-		private List<Method> buildMethodInfo()
+		private void buildMethodInfo(ref List<Method> methods)
 		{
-			return targetType
+			methods = targetType
 				.GetMethods(BindingFlags.Public | BindingFlags.Instance)
 				.Where(method => method.ReturnType == typeof(void) & method.IsParse())
 				.Select(method => new Method(method))
 				.ToList();
-		}
-
-		/// doThings(IEnumerable[MethodInfo])
-		/// <summary>
-		///
-		/// </summary>
-		/// <param name="methods"></param>
-		/// <returns></returns>
-		private IEnumerable<Method> doThings(IEnumerable<MethodInfo> methods)
-		{
-			var lookup = new Dictionary<MethodInfo, Method>();
-
-			foreach (var method in methods)
-			{
-			}
-
-			return lookup.Values;
 		}
 
 		/// interpreteCharacterValue(char, char, bool, bool, bool, bool)
@@ -251,6 +220,25 @@ namespace libargument
 				lastCharacter = character;
 			}
 			return tokenBuilder.ToString();
+		}
+
+		/// strikeMethod(List[Token], List[Method])
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="tokens"></param>
+		/// <param name="methods"></param>
+		/// <returns></returns>
+		private void strikeMethods(List<Token> tokens, ref List<Method> methods)
+		{
+			foreach (var token in tokens)
+			{
+				for (int i = methods.Count - 1; i >= 0; i--)
+				{
+					if (!methods[i].Parameter.HasKey(token))
+						methods.RemoveAt(i);
+				}
+			}
 		}
 	}
 }

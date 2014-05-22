@@ -10,9 +10,9 @@ namespace libargument
 	{
 		public List<string> Abbreviations;
 		public object DefaultValue;
+		public bool IsOptional;
 		public string Key;
-		public bool Optional;
-		public Token Token;
+		public List<Token> Token;
 		public Type Type;
 
 		public Parameter(ParameterInfo parameter)
@@ -20,9 +20,9 @@ namespace libargument
 			Key = parameter.GetKey();
 			Type = parameter.ParameterType;
 			Abbreviations = parameter.GetAbbreviations().ToList();
-			Optional = parameter.IsOptional;
+			IsOptional = parameter.IsOptional;
 			DefaultValue = parameter.DefaultValue;
-			Token = default(Token);
+			Token = new List<Token>();
 		}
 
 		public bool IsKnown(string key)
