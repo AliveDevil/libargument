@@ -7,7 +7,7 @@ using System.Text;
 namespace libargument.Exceptions
 {
 	[Serializable]
-	public class ActionNotFoundException : Exception
+	public sealed class ActionNotFoundException : Exception
 	{
 		public ActionNotFoundException()
 		{

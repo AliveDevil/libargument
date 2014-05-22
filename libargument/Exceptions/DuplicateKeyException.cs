@@ -7,7 +7,7 @@ using System.Text;
 namespace libargument.Exceptions
 {
 	[Serializable]
-	public class DuplicateKeyException : Exception
+	public sealed class DuplicateKeyException : Exception
 	{
 		public DuplicateKeyException()
 		{

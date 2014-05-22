@@ -8,7 +8,7 @@ namespace libargument.Exceptions
 {
 	[Serializable]
 	// any english speaking people: is that name right?
-	public class EquivocalActionsException : Exception
+	public sealed class EquivocalActionsException : Exception
 	{
 		public EquivocalActionsException()
 		{

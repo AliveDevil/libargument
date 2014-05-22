@@ -46,6 +46,17 @@ namespace libargument
 		/// <returns></returns>
 		public void Match()
 		{
+			Match<object>();
+		}
+
+		/// Match(T)
+		/// <summary>
+		///
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		public T Match<T>()
+		{
 			// forward declaration.
 			// don't know why I do this .. maybe OCD.
 			var methodInfos = default(List<Method>);
@@ -70,7 +81,17 @@ namespace libargument
 					objectParameter.Add(Assembling.ResolveValue(converter, item));
 			}
 
-			selectedMethod.MethodInfo.Invoke(controller, objectParameter.ToArray());
+			try
+			{
+				var retVal = selectedMethod.MethodInfo.Invoke(controller, objectParameter.ToArray());
+				if (retVal is T)
+					return (T)retVal;
+				throw new InvalidCastException();
+			}
+			catch (TargetInvocationException targetException)
+			{
+				throw targetException.InnerException;
+			}
 		}
 
 		/// Tokenize()
@@ -97,7 +118,7 @@ namespace libargument
 		{
 			methods = targetType
 				.GetMethods(BindingFlags.Public | BindingFlags.Instance)
-				.Where(method => method.ReturnType == typeof(void) & method.IsParse())
+				.Where(method => method.IsParse())
 				.Select(method => new Method(method))
 				.ToList();
 		}
