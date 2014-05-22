@@ -382,4 +382,42 @@ namespace libargument.Conversion
 			throw new ArgumentException("value is no TimeSpan.");
 		}
 	}
+	public sealed partial class DecimalConverter : ITypeConverter<Decimal>
+	{
+		private IController target;
+
+		public DecimalConverter(IController target)
+		{
+			this.target = target;
+		}
+
+		object ITypeConverter.Read(string value)
+		{
+			Decimal o;
+			return Decimal.TryParse(value, out o) ? (Object)o : null;
+		}
+
+		public bool CanRead(string value)
+		{
+			Decimal o;
+			return Decimal.TryParse(value, out o);
+		}
+
+		public Decimal Read(string value)
+		{
+			return Decimal.Parse(value);
+		}
+
+		public string Write(Decimal value)
+		{
+			return value.ToString();
+		}
+
+		public string Write(object value)
+		{
+			if (value is Decimal)
+				return value.ToString();
+			throw new ArgumentException("value is no Decimal.");
+		}
+	}
 }

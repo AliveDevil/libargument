@@ -19,7 +19,7 @@ namespace libargument
 			RegisterTypeConverter<TimeSpan>(new TimeSpanConverter(controller));
 			RegisterTypeConverter<Boolean>(new BooleanConverter(controller));
 			RegisterTypeConverter<String>(new StringConverter(controller));
-
+			RegisterTypeConverter<Decimal>(new DecimalConverter(controller));
 		}
 	}
 }

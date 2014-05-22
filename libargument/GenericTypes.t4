@@ -13,6 +13,7 @@ static Type[] types = new Type[]
 	typeof(TimeSpan), // 9
 	typeof(Boolean), // 10
 	typeof(String), // 11
+	typeof(Decimal), // 12
 };
 static Dictionary<Type, bool> generateClasses = new Dictionary<Type, bool>()
 {
@@ -27,7 +28,8 @@ static Dictionary<Type, bool> generateClasses = new Dictionary<Type, bool>()
 	{types[8], true},
 	{types[9], true},
 	{types[10], false},
-	{types[11], false}
+	{types[11], false},
+	{types[12], true},
 };
 public Type[] Types()
 {

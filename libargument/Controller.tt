@@ -19,7 +19,6 @@ foreach (var type in Types())
 <#
 }
 #>
-
 		}
 	}
 }
