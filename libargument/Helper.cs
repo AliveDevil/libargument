@@ -12,6 +12,15 @@ namespace libargument
 	/// </summary>
 	internal static class Helper
 	{
+		public static string ApplicationName(IController controller)
+		{
+			var applicationNames = controller.GetType().UnderlyingSystemType.GetCustomAttributes(false).OfType<ApplicationNameAttribute>();
+			if (applicationNames.Any())
+				return applicationNames.First().Name;
+			else
+				return controller.GetType().UnderlyingSystemType.Name;
+		}
+
 		public static IEnumerable<string> GetAbbreviations(this ParameterInfo parameter)
 		{
 			return parameter.GetCustomAttributes(false).OfType<AbbreviationAttribute>().Select(item => item.Abbreviation);
