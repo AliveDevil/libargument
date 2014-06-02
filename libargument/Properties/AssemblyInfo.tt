@@ -1,0 +1,46 @@
+﻿<#@ template language="C#" hostspecific="true" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ output extension=".cs" #>
+<#
+var info = new ProcessStartInfo(@"git");
+info.RedirectStandardOutput = true;
+info.CreateNoWindow = true;
+info.UseShellExecute = false;
+info.Verb = "runas";
+info.WorkingDirectory = Path.GetDirectoryName(Host.TemplateFile);
+info.Arguments = "rev-list HEAD --count";
+
+var process = new System.Diagnostics.Process();
+process.StartInfo = info;
+process.Start();
+var version = new Version(0, 1, 0, int.Parse(process.StandardOutput.ReadLine()));
+process.WaitForExit();
+var suffix = "pre";
+#>
+using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+
+[assembly: AssemblyTitle("libargument")]
+[assembly: AssemblyDescription("Simple library for parsing command line arguments.")]
+#if DEBUG
+[assembly: AssemblyConfiguration("DEBUG")]
+#elif NET35
+[assembly: AssemblyConfiguration("Release NET35")]
+#elif NET40
+[assembly: AssemblyConfiguration("Release NET40")]
+#else
+[assembly: AssemblyConfiguration("")]
+#endif
+[assembly: AssemblyCompany("AliveDevil")]
+[assembly: AssemblyProduct("libargument")]
+[assembly: AssemblyCopyright("© 2014 AliveDevil")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+[assembly: AssemblyVersion("<#= version #>")]
+[assembly: AssemblyFileVersion("<#= version #>")]
+[assembly: AssemblyInformationalVersion("v<#= version.ToString(3) #>-<#= suffix #>")]
+[assembly: Guid("b29fc4ca-cf38-45c9-8ab3-4969a3f5cb17")]

@@ -40,6 +40,10 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </None>
     <None Include="Controller.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Controller.generated.cs</LastGenOutput>
@@ -52,6 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assembling.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Attributes\AbbreviationAttribute.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Controller.generated.cs">
@@ -78,11 +87,13 @@
     <Compile Include="Parameter.cs" />
     <Compile Include="Attributes\ParseAttribute.cs" />
     <Compile Include="Parser.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Token.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
