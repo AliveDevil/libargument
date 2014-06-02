@@ -47,7 +47,7 @@ namespace libargument
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <returns></returns>
-		public T Match<T>()
+		public TOut Match<TOut>()
 		{
 			// forward declaration.
 			// don't know why I do this .. maybe OCD.
@@ -77,9 +77,9 @@ namespace libargument
 			{
 				var retVal = selectedMethod.MethodInfo.Invoke(controller, objectParameter.ToArray());
 				if (retVal == null)
-					return default(T);
-				if (retVal is T)
-					return (T)retVal;
+					return default(TOut);
+				if (retVal is TOut)
+					return (TOut)retVal;
 				throw new InvalidCastException();
 			}
 			catch (TargetInvocationException targetException)

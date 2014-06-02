@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<package>
+	<metadata>
+		<id>libargument</id>
+		<version>0.1.1</version>
+		<title>libargument</title>
+		<authors>AliveDevil</authors>
+		<owners>AliveDevil</owners>
+		<licenseUrl>http://opensource.org/licenses/GPL-2.0</licenseUrl>
+		<projectUrl>https://github.com/alivedevil/libargument</projectUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Simple library for parsing command line args.</description>
+		<releaseNotes>Initial Release</releaseNotes>
+		<copyright>Copyright © 2014, AliveDevil</copyright>
+		<tags>Command Line Arguments Parser</tags>
+	</metadata>
+</package>

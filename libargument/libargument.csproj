@@ -40,6 +40,15 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="libargument.nuspec">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>libargument.tt</DependentUpon>
+    </None>
+    <None Include="libargument.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>libargument.nuspec</LastGenOutput>
+    </None>
     <None Include="Properties\AssemblyInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
@@ -53,14 +62,10 @@
       <LastGenOutput>Converter.generated.cs</LastGenOutput>
     </None>
     <None Include="GenericTypes.t4" />
+    <None Include="Version.t4" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assembling.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AssemblyInfo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Attributes\AbbreviationAttribute.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Controller.generated.cs">
@@ -87,6 +92,11 @@
     <Compile Include="Parameter.cs" />
     <Compile Include="Attributes\ParseAttribute.cs" />
     <Compile Include="Parser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Token.cs" />
   </ItemGroup>
   <ItemGroup>

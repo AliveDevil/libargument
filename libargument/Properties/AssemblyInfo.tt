@@ -1,24 +1,6 @@
 ﻿<#@ template language="C#" hostspecific="true" #>
-<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
-<#@ import namespace="System.IO" #>
-<#@ import namespace="System.Diagnostics" #>
 <#@ output extension=".cs" #>
-<#
-var info = new ProcessStartInfo(@"git");
-info.RedirectStandardOutput = true;
-info.CreateNoWindow = true;
-info.UseShellExecute = false;
-info.Verb = "runas";
-info.WorkingDirectory = Path.GetDirectoryName(Host.TemplateFile);
-info.Arguments = "rev-list HEAD --count";
-
-var process = new System.Diagnostics.Process();
-process.StartInfo = info;
-process.Start();
-var version = new Version(0, 1, 1, int.Parse(process.StandardOutput.ReadLine()));
-process.WaitForExit();
-var suffix = "pre";
-#>
+<#@ include file="..\Version.t4" #>
 using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
