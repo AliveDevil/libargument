@@ -10,7 +10,7 @@ namespace libargument
 {
 	public abstract partial class Controller : IController
 	{
-		private const string header = "Help powered by libargument {0}.\n© 2014 by AliveDevil\nhttps://github.com/alivedevil/libargument/\nSkip with /noheader\n";
+		private const string header = "== {0} ==\nPowered by libargument {1}.\n© 2014 by AliveDevil\nhttps://github.com/alivedevil/libargument/\nSkip with /noheader\n";
 		private readonly Dictionary<Type, ITypeConverter> typeConverter;
 
 		public Controller()
@@ -28,6 +28,11 @@ namespace libargument
 		public void Help()
 		{
 			Help(true, false);
+		}
+
+		public void PrintHeader()
+		{
+			Console.Write(header, Name(), GetType().Assembly.GetName().Version);
 		}
 
 		public void RegisterTypeConverter(Type type, ITypeConverter typeConverter)
@@ -54,9 +59,9 @@ namespace libargument
 			return (ITypeConverter<T>)ResolveType(typeof(T));
 		}
 
-		private void PrintHeader()
+		protected virtual string Name()
 		{
-			Console.Write(header, GetType().Assembly.GetName().Version);
+			return this.ApplicationName();
 		}
 	}
 }

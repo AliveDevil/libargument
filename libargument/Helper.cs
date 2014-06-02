@@ -12,7 +12,7 @@ namespace libargument
 	/// </summary>
 	internal static class Helper
 	{
-		public static string ApplicationName(IController controller)
+		public static string ApplicationName(this IController controller)
 		{
 			var applicationNames = controller.GetType().UnderlyingSystemType.GetCustomAttributes(false).OfType<ApplicationNameAttribute>();
 			if (applicationNames.Any())

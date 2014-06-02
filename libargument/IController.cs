@@ -10,6 +10,8 @@ namespace libargument
 	{
 		void Help();
 
+		void PrintHeader();
+
 		void RegisterTypeConverter(Type type, ITypeConverter typeConverter);
 
 		void RegisterTypeConverter<T>(ITypeConverter<T> typeConverter);
