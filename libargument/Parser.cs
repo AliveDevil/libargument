@@ -10,10 +10,10 @@ using System.Text;
 namespace libargument
 {
 	/// <summary>
-	///
+	/// Provides access to <see cref="M:Tokenize()"/> and <see cref="M:Match()"/>. Executes matching methods in given <see cref="T:libargument.IController"/>.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public sealed partial class Parser<T> where T : IController
+	/// <typeparam name="T">Some type of <seealso cref="T:libargument.IController"/></typeparam>
+	public sealed partial class Parser<T> where T : IController, new()
 	{
 		private string arguments;
 		private T controller;
@@ -28,13 +28,13 @@ namespace libargument
 		public Parser(string arguments)
 		{
 			this.targetType = typeof(T);
-			this.controller = Activator.CreateInstance<T>();
+			this.controller = new T();
 			this.arguments = arguments;
 		}
 
 		/// Match()
 		/// <summary>
-		/// Executes <seealso cref="M:libargument.Parser&lt;T&gt;.Match&lt;TOut&gt;()" /> without returning anything.
+		/// Executes <seealso cref="M:Match&lt;TOut&gt;()" /> without returning anything.
 		/// </summary>
 		public void Match()
 		{
@@ -49,7 +49,7 @@ namespace libargument
 		/// </summary>
 		/// <remarks>Tokenize() has to be called before!</remarks>
 		/// <typeparam name="TOut">Return type</typeparam>
-		/// <returns></returns>
+		/// <returns>Invoked action return object.</returns>
 		/// <exception cref="System.InvalidCastException">Thrown if target type does not match returned type.</exception>
 		public TOut Match<TOut>()
 		{
@@ -129,6 +129,8 @@ namespace libargument
 		/// <param name="lastCharacter"></param>
 		/// <param name="inQuote"></param>
 		/// <param name="nextEscape"></param>
+		/// <param name="append"></param>
+		/// <param name="quit"></param>
 		/// <returns></returns>
 		private void interpreteCharacterValue(
 			char character,

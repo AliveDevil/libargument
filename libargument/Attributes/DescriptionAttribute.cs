@@ -5,27 +5,31 @@ using System.Text;
 
 namespace libargument.Attributes
 {
+	/// <summary>
+	///
+	/// </summary>
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
 	public sealed class DescriptionAttribute : Attribute
 	{
-		private readonly string longDescription;
-
-		private readonly string shortDescription;
-
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="shortDescription"></param>
+		/// <param name="longDescription"></param>
 		public DescriptionAttribute(string shortDescription, string longDescription)
 		{
-			this.shortDescription = shortDescription;
-			this.longDescription = longDescription;
+			ShortDescription = shortDescription;
+			LongDescription = longDescription;
 		}
 
-		public string LongDescription
-		{
-			get { return longDescription; }
-		}
+		/// <summary>
+		///
+		/// </summary>
+		public string LongDescription { get; private set; }
 
-		public string ShortDescription
-		{
-			get { return shortDescription; }
-		}
+		/// <summary>
+		///
+		/// </summary>
+		public string ShortDescription { get; private set; }
 	}
 }

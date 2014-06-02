@@ -5,19 +5,24 @@ using System.Text;
 
 namespace libargument.Attributes
 {
+	/// <summary>
+	///
+	/// </summary>
 	[AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
 	public sealed class ApplicationNameAttribute : Attribute
 	{
-		private readonly string name;
-
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="name"></param>
 		public ApplicationNameAttribute(string name)
 		{
-			this.name = name;
+			Name = name;
 		}
 
-		public string Name
-		{
-			get { return name; }
-		}
+		/// <summary>
+		///
+		/// </summary>
+		public string Name { get; private set; }
 	}
 }

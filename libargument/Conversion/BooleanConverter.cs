@@ -5,26 +5,48 @@ using System.Text;
 
 namespace libargument.Conversion
 {
+	/// <summary>
+	///
+	/// </summary>
 	public class BooleanConverter : ITypeConverter<Boolean>
 	{
 		private IController target;
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="target"></param>
 		public BooleanConverter(IController target)
 		{
 			this.target = target;
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public bool CanRead(string value)
 		{
 			Boolean o;
 			return Boolean.TryParse(value, out o);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		object ITypeConverter.Read(string value)
 		{
 			return Read(value);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public Boolean Read(string value)
 		{
 			Boolean o;
@@ -37,11 +59,21 @@ namespace libargument.Conversion
 			return o;
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public string Write(Boolean value)
 		{
 			return value.ToString();
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public string Write(object value)
 		{
 			if (value is Boolean)

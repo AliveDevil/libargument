@@ -12,37 +12,69 @@ foreach (var type in Types())
 	if (GenerateClass(type))
 	{
 #>
+	/// <summary>
+	///
+	/// </summary>
 	public sealed partial class <#= type.Name #>Converter : ITypeConverter<<#= type.Name #>>
 	{
 		private IController target;
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="target"></param>
 		public <#= type.Name #>Converter(IController target)
 		{
 			this.target = target;
 		}
 
-		object ITypeConverter.Read(string value)
-		{
-			<#= type.Name #> o;
-			return <#= type.Name #>.TryParse(value, out o) ? (Object)o : null;
-		}
-
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public bool CanRead(string value)
 		{
 			<#= type.Name #> o;
 			return <#= type.Name #>.TryParse(value, out o);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		object ITypeConverter.Read(string value)
+		{
+			<#= type.Name #> o;
+			return <#= type.Name #>.TryParse(value, out o) ? (Object)o : null;
+		}
+
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public <#= type.Name #> Read(string value)
 		{
 			return <#= type.Name #>.Parse(value);
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public string Write(<#= type.Name #> value)
 		{
 			return value.ToString();
 		}
 
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public string Write(object value)
 		{
 			if (value is <#= type.Name #>)
