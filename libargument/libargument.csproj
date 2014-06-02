@@ -68,6 +68,7 @@
     <Compile Include="Assembling.cs" />
     <Compile Include="Attributes\AbbreviationAttribute.cs" />
     <Compile Include="Attributes\ApplicationNameAttribute.cs" />
+    <Compile Include="Attributes\DescriptionAttribute.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="Controller.generated.cs">
       <AutoGen>True</AutoGen>
