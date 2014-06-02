@@ -22,8 +22,9 @@ namespace libargument
 
 		/// Parser(string)
 		/// <summary>
-		/// Constructor for copying getting custom arguments.
+		/// Constructor with specified arguments.
 		/// </summary>
+		/// <param name="arguments">Arguments for this instance.</param>
 		public Parser(string arguments)
 		{
 			this.targetType = typeof(T);
@@ -33,20 +34,23 @@ namespace libargument
 
 		/// Match()
 		/// <summary>
-		///
+		/// Executes <seealso cref="M:libargument.Parser&lt;T&gt;.Match&lt;TOut&gt;()" /> without returning anything.
 		/// </summary>
-		/// <returns></returns>
 		public void Match()
 		{
+			// does anyone has an idea how to get Visual Studio to accept libargument.Parser<T>.Match<TOut>() ?
 			Match<object>();
 		}
 
-		/// Match(T)
+		/// Match(TOut)
 		/// <summary>
-		///
+		/// Checks every method in current controller and executes best matching method.
+		/// This method tries to return correct type or throws an InvalidCastException.
 		/// </summary>
-		/// <typeparam name="T"></typeparam>
+		/// <remarks>Tokenize() has to be called before!</remarks>
+		/// <typeparam name="TOut">Return type</typeparam>
 		/// <returns></returns>
+		/// <exception cref="System.InvalidCastException">Thrown if target type does not match returned type.</exception>
 		public TOut Match<TOut>()
 		{
 			// forward declaration.
