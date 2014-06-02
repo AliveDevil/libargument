@@ -18,7 +18,7 @@ namespace libargument
 			if (applicationNames.Any())
 				return applicationNames.First().Name;
 			else
-				return controller.GetType().UnderlyingSystemType.Name;
+				return controller.GetType().UnderlyingSystemType.Assembly.GetName().Name;
 		}
 
 		public static IEnumerable<string> GetAbbreviations(this ParameterInfo parameter)

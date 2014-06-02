@@ -6,7 +6,7 @@ using System;
 namespace libargument_Tests
 {
 	[TestClass]
-	public class ParserTests
+	public sealed class ParserTests
 	{
 		[TestMethod]
 		public void MatchAbbreviationTest()
@@ -48,6 +48,22 @@ namespace libargument_Tests
 			var parser = new Parser<ParserTestObject>("/action");
 			parser.Tokenize();
 			Assert.AreEqual(73572, parser.Match<int>());
+		}
+
+		[TestMethod]
+		public void NamedTest()
+		{
+			var parser = new Parser<ParserNamedTestObject>("/name");
+			parser.Tokenize();
+			Assert.AreEqual("Tests", parser.Match<string>());
+		}
+
+		[TestMethod]
+		public void UnnamedTest()
+		{
+			var parser = new Parser<ParserTestObject>("/name");
+			parser.Tokenize();
+			Assert.AreEqual("libargument-Tests", parser.Match<string>());
 		}
 	}
 }

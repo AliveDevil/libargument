@@ -20,6 +20,12 @@ namespace libargument_Tests
 		public int IEnumerable([Key("test")] string[] test) { return test.Count(); }
 
 		[Parse]
+		public string Name([Key("name")]bool name)
+		{
+			return Name();
+		}
+
+		[Parse]
 		public int Test([Key("switch"), Abbreviation("s")] bool switchParameter) { return 7357; }
 
 		[Parse]
