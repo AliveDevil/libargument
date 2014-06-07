@@ -9,8 +9,9 @@ Going to implement the Help-provider in near future.
 * execute different methods based on selected switches (behave like PowerShell script) (implemented)
 * match first action (implemented)
 * ~~Autocomplete~~ (this requires a custom written command prompt. Won't do that)
-* providing Help (work in progress)
-* Documentation
+* providing help (work in progress)
+* Documentation (work in progress)
+* Samples (work in progress)
 
 ## Thoughts
 ```
@@ -25,13 +26,13 @@ Going to implement the Help-provider in near future.
 ```
 
 Escape-sequences  
-`\ , \t, \n, \"`
+`\ , \"`
 
 ## Types to be implemented
-* Switch
-* Value
-* Enumeration
-* List
+* ~~Switch~~ (done)
+* ~~Value~~ done
+* ~~Enumeration~~ not implemented
+* ~~List~~ done
 
 ## Auto-Help
 Basic structure of /help-switch:

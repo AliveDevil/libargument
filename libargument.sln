@@ -14,11 +14,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libargument", "libargument\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libargument-Tests", "libargument-Tests\libargument-Tests.csproj", "{36059383-FA11-4CB2-AB53-2F6D5B256B16}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{5812C147-7750-41D2-B393-E8A8E5A91C03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libargument-Sample", "libargument-Sample\libargument-Sample.csproj", "{BF7540BC-28FC-4E69-ADF4-568E9AB92439}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release NET35|Any CPU = Release NET35|Any CPU
 		Release NET40|Any CPU = Release NET40|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -27,14 +32,29 @@ Global
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release NET35|Any CPU.Build.0 = Release NET35|Any CPU
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release NET40|Any CPU.ActiveCfg = Release NET40|Any CPU
 		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release NET40|Any CPU.Build.0 = Release NET40|Any CPU
+		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release|Any CPU.ActiveCfg = Release NET40|Any CPU
+		{C4359B07-9283-4231-B236-21B68FFC2D4F}.Release|Any CPU.Build.0 = Release NET40|Any CPU
 		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release NET35|Any CPU.ActiveCfg = Release|Any CPU
 		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release NET35|Any CPU.Build.0 = Release|Any CPU
 		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release NET40|Any CPU.ActiveCfg = Release|Any CPU
 		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release NET40|Any CPU.Build.0 = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36059383-FA11-4CB2-AB53-2F6D5B256B16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439}.Release NET35|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439}.Release NET35|Any CPU.Build.0 = Release|Any CPU
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439}.Release NET40|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439}.Release NET40|Any CPU.Build.0 = Release|Any CPU
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BF7540BC-28FC-4E69-ADF4-568E9AB92439} = {5812C147-7750-41D2-B393-E8A8E5A91C03}
 	EndGlobalSection
 EndGlobal
