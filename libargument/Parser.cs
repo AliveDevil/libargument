@@ -102,7 +102,8 @@ namespace libargument
 			if (tokenList == null)
 				tokenList = new List<Token>();
 			tokenList.Clear();
-			using (var memory = new MemoryStream(Encoding.Default.GetBytes(arguments), false))
+			var chars = Encoding.Default.GetBytes(arguments);
+			using (var memory = new MemoryStream(chars, false))
 			using (var reader = new StreamReader(memory))
 				while (reader.Peek() != -1)
 					tokenList.Add(readParameter(reader));
@@ -236,7 +237,8 @@ namespace libargument
 			int read;
 			char character, lastCharacter = '\0';
 			bool append = false, quit = false, inQuote = false, nextEscape = false, lastEscape;
-			while (!quit & (read = reader.Read()) != -1)
+
+			while (!quit && (read = reader.Read()) != -1)
 			{
 				character = (char)read;
 				lastEscape = nextEscape;

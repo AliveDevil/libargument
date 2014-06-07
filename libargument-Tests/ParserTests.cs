@@ -52,9 +52,16 @@ namespace libargument_Tests
 		[TestMethod]
 		public void MatchWhitespace()
 		{
-			var parser = new Parser<ParserTestObject>("/whitespace=\"test whitespace\"");
+			var parser = new Parser<ParserTestObject>("/w=\"test whitespace\"");
 			parser.Tokenize();
 			Assert.AreEqual(3, parser.Match<int>());
+		}
+		[TestMethod]
+		public void MatchWhitespace2()
+		{
+			var parser = new Parser<ParserTestObject>("/w1=test /w2=\"test whitespace\"");
+			parser.Tokenize();
+			Assert.AreEqual(4, parser.Match<int>());
 		}
 
 		[TestMethod]

@@ -1,10 +1,6 @@
 ﻿using libargument;
 using libargument.Attributes;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace libargument_Tests
 {
@@ -32,6 +28,9 @@ namespace libargument_Tests
 		public int Test2([Key("action"), Abbreviation("a")] bool action) { return 73572; }
 
 		[Parse]
-		public int WhitespaceTest([Key("whitespace")] string whitespace) { return 3; }
+		public int WhitespaceTest([Key("w")] string whitespace) { return 3; }
+
+		[Parse]
+		public int WhitespaceTest2([Key("w1")] string whitespace, [Key("w2")] string w2) { return 4; }
 	}
 }
