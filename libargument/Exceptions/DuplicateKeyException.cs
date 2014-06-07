@@ -37,15 +37,5 @@ namespace libargument.Exceptions
 			: base(message, inner)
 		{
 		}
-
-		/// <summary>
-		///
-		/// </summary>
-		/// <param name="info"></param>
-		/// <param name="context"></param>
-		protected DuplicateKeyException(
-		  SerializationInfo info,
-		  StreamingContext context)
-			: base(info, context) { }
 	}
 }

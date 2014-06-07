@@ -6,7 +6,7 @@ using System.Text;
 namespace libargument.Attributes
 {
 	/// <summary>
-	///
+	/// Override default behavior of using parameter name as key.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Parameter, Inherited = false, AllowMultiple = false)]
 	public sealed class KeyAttribute : Attribute
@@ -21,7 +21,7 @@ namespace libargument.Attributes
 		}
 
 		/// <summary>
-		///
+		/// Returns user defined key for parameter.
 		/// </summary>
 		public string Key { get; private set; }
 	}

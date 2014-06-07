@@ -78,7 +78,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Controller.tt</DependentUpon>
     </Compile>
-    <Compile Include="Conversion\BooleanConverter.cs" />
     <Compile Include="Conversion\Converter.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

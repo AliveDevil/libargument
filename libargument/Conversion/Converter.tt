@@ -13,14 +13,14 @@ foreach (var type in Types())
 	{
 #>
 	/// <summary>
-	///
+	/// Converts a string from and to <#= type.Name #>.
 	/// </summary>
-	public sealed partial class <#= type.Name #>Converter : ITypeConverter<<#= type.Name #>>
+	public sealed class <#= type.Name #>Converter : ITypeConverter<<#= type.Name #>>
 	{
 		private IController target;
 
 		/// <summary>
-		/// 
+		///  Default constructor providing access to an IController instance.
 		/// </summary>
 		/// <param name="target"></param>
 		public <#= type.Name #>Converter(IController target)
@@ -29,10 +29,10 @@ foreach (var type in Types())
 		}
 
 		/// <summary>
-		///
+		/// Determines if a value can be read by current converter.
 		/// </summary>
 		/// <param name="value"></param>
-		/// <returns></returns>
+		/// <returns>If this value can be converted to <#= type.Name #>.</returns>
 		public bool CanRead(string value)
 		{
 			<#= type.Name #> o;
@@ -40,7 +40,7 @@ foreach (var type in Types())
 		}
 
 		/// <summary>
-		///
+		/// Tries to convert specified value to <#= type.Name #> or returns null in case of failure.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -51,7 +51,7 @@ foreach (var type in Types())
 		}
 
 		/// <summary>
-		///
+		/// Tries to convert specified value to <#= type.Name #> or throws an exception. See <see cref="<#= type.FullName #>.Parse(System.String)" />.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -61,7 +61,7 @@ foreach (var type in Types())
 		}
 
 		/// <summary>
-		///
+		/// Unused.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -71,7 +71,7 @@ foreach (var type in Types())
 		}
 
 		/// <summary>
-		///
+		/// Unused.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>

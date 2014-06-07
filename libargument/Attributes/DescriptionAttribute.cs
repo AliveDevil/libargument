@@ -6,7 +6,7 @@ using System.Text;
 namespace libargument.Attributes
 {
 	/// <summary>
-	///
+	/// Applies to classes and methods providing short and detailed information.
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = false, AllowMultiple = false)]
 	public sealed class DescriptionAttribute : Attribute
@@ -23,12 +23,12 @@ namespace libargument.Attributes
 		}
 
 		/// <summary>
-		///
+		/// Gets detailed description.
 		/// </summary>
 		public string LongDescription { get; private set; }
 
 		/// <summary>
-		///
+		/// Gets short description.
 		/// </summary>
 		public string ShortDescription { get; private set; }
 	}

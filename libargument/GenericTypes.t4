@@ -27,7 +27,7 @@ static Dictionary<Type, bool> generateClasses = new Dictionary<Type, bool>()
 	{types[7], true},
 	{types[8], true},
 	{types[9], true},
-	{types[10], false},
+	{types[10], true},
 	{types[11], false},
 	{types[12], true},
 };
