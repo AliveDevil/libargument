@@ -1,7 +1,6 @@
 ﻿using libargument;
 using libargument.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace libargument_Tests
 {
@@ -48,6 +47,14 @@ namespace libargument_Tests
 			var parser = new Parser<ParserTestObject>("/action");
 			parser.Tokenize();
 			Assert.AreEqual(73572, parser.Match<int>());
+		}
+
+		[TestMethod]
+		public void MatchWhitespace()
+		{
+			var parser = new Parser<ParserTestObject>("/whitespace=\"test whitespace\"");
+			parser.Tokenize();
+			Assert.AreEqual(3, parser.Match<int>());
 		}
 
 		[TestMethod]

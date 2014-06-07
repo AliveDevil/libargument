@@ -30,5 +30,8 @@ namespace libargument_Tests
 
 		[Parse]
 		public int Test2([Key("action"), Abbreviation("a")] bool action) { return 73572; }
+
+		[Parse]
+		public int WhitespaceTest([Key("whitespace")] string whitespace) { return 3; }
 	}
 }

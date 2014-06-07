@@ -183,8 +183,8 @@ namespace libargument
 			var token = default(Token);
 			int read;
 
-			// skip any leading '/' and whitespace
-			while ((read = reader.Peek()) != -1 && ((char)read == '/' | (char)read == ' '))
+			// skip any leading non '/' character
+			while ((read = reader.Peek()) != -1 && (char)read != '/')
 				read = reader.Read();
 
 			token.Key = readParameterKey(reader);
@@ -205,6 +205,11 @@ namespace libargument
 			var tokenBuilder = new StringBuilder();
 			int read;
 			char character;
+
+			// reads first char and returns if it is no valid option
+			// may be throw an exception?
+			if ((read = reader.Read()) != -1 && (char)read != '/')
+				return "";
 
 			while ((read = reader.Peek()) != -1)
 			{
