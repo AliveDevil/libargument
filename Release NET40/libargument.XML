@@ -1,0 +1,1084 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>libargument</name>
+    </assembly>
+    <members>
+        <member name="T:libargument.Attributes.AbbreviationAttribute">
+            <summary>
+            Adds an abbreviation to a parameter.
+            </summary>
+        </member>
+        <member name="M:libargument.Attributes.AbbreviationAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new instance of AbbreviationAttribute and applies given abbreviation.
+            </summary>
+            <param name="abbreviation"></param>
+        </member>
+        <member name="P:libargument.Attributes.AbbreviationAttribute.Abbreviation">
+            <summary>
+            Returns current abbreviation.
+            </summary>
+        </member>
+        <member name="T:libargument.Attributes.ApplicationNameAttribute">
+            <summary>
+            Overrides usage of Assembly.GetName().Name for Header.
+            </summary>
+        </member>
+        <member name="M:libargument.Attributes.ApplicationNameAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new instance of ApplicationNameAttribute applying given name as ApplicationName.
+            </summary>
+            <param name="name">Some name for </param>
+        </member>
+        <member name="P:libargument.Attributes.ApplicationNameAttribute.Name">
+            <summary>
+            Returns given ApplicationName,
+            </summary>
+        </member>
+        <member name="T:libargument.Attributes.DescriptionAttribute">
+            <summary>
+            Applies to classes and methods providing short and detailed information.
+            </summary>
+        </member>
+        <member name="M:libargument.Attributes.DescriptionAttribute.#ctor(System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="shortDescription"></param>
+             <param name="longDescription"></param>
+        </member>
+        <member name="P:libargument.Attributes.DescriptionAttribute.LongDescription">
+            <summary>
+            Gets detailed description.
+            </summary>
+        </member>
+        <member name="P:libargument.Attributes.DescriptionAttribute.ShortDescription">
+            <summary>
+            Gets short description.
+            </summary>
+        </member>
+        <member name="T:libargument.Controller">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:libargument.IController">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.IController.Help">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.IController.PrintHeader">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.IController.RegisterTypeConverter(System.Type,libargument.Conversion.ITypeConverter)">
+             <summary>
+            
+             </summary>
+             <param name="type"></param>
+             <param name="typeConverter"></param>
+        </member>
+        <member name="M:libargument.IController.RegisterTypeConverter``1(libargument.Conversion.ITypeConverter{``0})">
+             <summary>
+            
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="typeConverter"></param>
+        </member>
+        <member name="M:libargument.IController.ResolveType(System.Type)">
+             <summary>
+            
+             </summary>
+             <param name="targetType"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.IController.ResolveType``1">
+             <summary>
+            
+             </summary>
+             <typeparam name="T"></typeparam>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Controller.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Controller.Help(System.Boolean,System.Boolean)">
+             <summary>
+            
+             </summary>
+             <param name="help"></param>
+             <param name="noHeader"></param>
+        </member>
+        <member name="M:libargument.Controller.Help">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Controller.PrintHeader">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Controller.RegisterTypeConverter(System.Type,libargument.Conversion.ITypeConverter)">
+             <summary>
+            
+             </summary>
+             <param name="type"></param>
+             <param name="typeConverter"></param>
+        </member>
+        <member name="M:libargument.Controller.RegisterTypeConverter``1(libargument.Conversion.ITypeConverter{``0})">
+             <summary>
+            
+             </summary>
+             <typeparam name="T"></typeparam>
+             <param name="typeConverter"></param>
+        </member>
+        <member name="M:libargument.Controller.ResolveType(System.Type)">
+             <summary>
+            
+             </summary>
+             <param name="targetType"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Controller.ResolveType``1">
+             <summary>
+            
+             </summary>
+             <typeparam name="T"></typeparam>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Controller.Name">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.Int16Converter">
+            <summary>
+            Converts a string from and to Int16.
+            </summary>
+        </member>
+        <member name="T:libargument.Conversion.ITypeConverter`1">
+            <summary>
+            Generic interface to <see cref="T:libargument.ITypeConverter"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:libargument.Conversion.ITypeConverter">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Conversion.ITypeConverter.CanRead(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.ITypeConverter.Read(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.ITypeConverter.Write(System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.ITypeConverter`1.Read(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.ITypeConverter`1.Write(`0)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int16Converter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.Int16Converter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to Int16.</returns>
+        </member>
+        <member name="M:libargument.Conversion.Int16Converter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to Int16 or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int16Converter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to Int16 or throws an exception. See <see cref="M:System.Int16.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int16Converter.Write(System.Int16)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int16Converter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.Int32Converter">
+            <summary>
+            Converts a string from and to Int32.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.Int32Converter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.Int32Converter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to Int32.</returns>
+        </member>
+        <member name="M:libargument.Conversion.Int32Converter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to Int32 or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int32Converter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to Int32 or throws an exception. See <see cref="M:System.Int32.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int32Converter.Write(System.Int32)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int32Converter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.Int64Converter">
+            <summary>
+            Converts a string from and to Int64.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.Int64Converter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.Int64Converter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to Int64.</returns>
+        </member>
+        <member name="M:libargument.Conversion.Int64Converter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to Int64 or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int64Converter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to Int64 or throws an exception. See <see cref="M:System.Int64.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int64Converter.Write(System.Int64)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.Int64Converter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.UInt16Converter">
+            <summary>
+            Converts a string from and to UInt16.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.UInt16Converter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.UInt16Converter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to UInt16.</returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt16Converter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to UInt16 or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt16Converter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to UInt16 or throws an exception. See <see cref="M:System.UInt16.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt16Converter.Write(System.UInt16)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt16Converter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.UInt32Converter">
+            <summary>
+            Converts a string from and to UInt32.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.UInt32Converter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.UInt32Converter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to UInt32.</returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt32Converter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to UInt32 or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt32Converter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to UInt32 or throws an exception. See <see cref="M:System.UInt32.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt32Converter.Write(System.UInt32)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt32Converter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.UInt64Converter">
+            <summary>
+            Converts a string from and to UInt64.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.UInt64Converter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.UInt64Converter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to UInt64.</returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt64Converter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to UInt64 or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt64Converter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to UInt64 or throws an exception. See <see cref="M:System.UInt64.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt64Converter.Write(System.UInt64)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.UInt64Converter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.SingleConverter">
+            <summary>
+            Converts a string from and to Single.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.SingleConverter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.SingleConverter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to Single.</returns>
+        </member>
+        <member name="M:libargument.Conversion.SingleConverter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to Single or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.SingleConverter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to Single or throws an exception. See <see cref="M:System.Single.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.SingleConverter.Write(System.Single)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.SingleConverter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.DoubleConverter">
+            <summary>
+            Converts a string from and to Double.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.DoubleConverter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.DoubleConverter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to Double.</returns>
+        </member>
+        <member name="M:libargument.Conversion.DoubleConverter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to Double or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DoubleConverter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to Double or throws an exception. See <see cref="M:System.Double.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DoubleConverter.Write(System.Double)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DoubleConverter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.DateTimeConverter">
+            <summary>
+            Converts a string from and to DateTime.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.DateTimeConverter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.DateTimeConverter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to DateTime.</returns>
+        </member>
+        <member name="M:libargument.Conversion.DateTimeConverter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to DateTime or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DateTimeConverter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to DateTime or throws an exception. See <see cref="M:System.DateTime.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DateTimeConverter.Write(System.DateTime)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DateTimeConverter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.TimeSpanConverter">
+            <summary>
+            Converts a string from and to TimeSpan.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.TimeSpanConverter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.TimeSpanConverter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to TimeSpan.</returns>
+        </member>
+        <member name="M:libargument.Conversion.TimeSpanConverter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to TimeSpan or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.TimeSpanConverter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to TimeSpan or throws an exception. See <see cref="M:System.TimeSpan.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.TimeSpanConverter.Write(System.TimeSpan)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.TimeSpanConverter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.BooleanConverter">
+            <summary>
+            Converts a string from and to Boolean.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.BooleanConverter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.BooleanConverter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to Boolean.</returns>
+        </member>
+        <member name="M:libargument.Conversion.BooleanConverter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to Boolean or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.BooleanConverter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to Boolean or throws an exception. See <see cref="M:System.Boolean.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.BooleanConverter.Write(System.Boolean)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.BooleanConverter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.DecimalConverter">
+            <summary>
+            Converts a string from and to Decimal.
+            </summary>
+        </member>
+        <member name="M:libargument.Conversion.DecimalConverter.#ctor(libargument.IController)">
+            <summary>
+             Default constructor providing access to an IController instance.
+            </summary>
+            <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.DecimalConverter.CanRead(System.String)">
+            <summary>
+            Determines if a value can be read by current converter.
+            </summary>
+            <param name="value"></param>
+            <returns>If this value can be converted to Decimal.</returns>
+        </member>
+        <member name="M:libargument.Conversion.DecimalConverter.libargument#Conversion#ITypeConverter#Read(System.String)">
+            <summary>
+            Tries to convert specified value to Decimal or returns null in case of failure.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DecimalConverter.Read(System.String)">
+            <summary>
+            Tries to convert specified value to Decimal or throws an exception. See <see cref="M:System.Decimal.Parse(System.String)"/>.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DecimalConverter.Write(System.Decimal)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.DecimalConverter.Write(System.Object)">
+            <summary>
+            Unused.
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.StringConverter">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Conversion.StringConverter.#ctor(libargument.IController)">
+             <summary>
+            
+             </summary>
+             <param name="target"></param>
+        </member>
+        <member name="M:libargument.Conversion.StringConverter.CanRead(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.StringConverter.libargument#Conversion#ITypeConverter#Read(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.StringConverter.Read(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.StringConverter.Write(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.StringConverter.Write(System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="T:libargument.Conversion.SwitchConverter">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Conversion.SwitchConverter.CanRead(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.SwitchConverter.libargument#Conversion#ITypeConverter#Read(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.SwitchConverter.Read(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.SwitchConverter.Write(libargument.Switch)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Conversion.SwitchConverter.Write(System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="value"></param>
+             <returns></returns>
+        </member>
+        <member name="T:libargument.Exceptions.ActionNotFoundException">
+            <summary>
+            Thrown if an action has not been found in current controller instance.
+            </summary>
+        </member>
+        <member name="M:libargument.Exceptions.ActionNotFoundException.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Exceptions.ActionNotFoundException.#ctor(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="message"></param>
+        </member>
+        <member name="M:libargument.Exceptions.ActionNotFoundException.#ctor(System.String,System.Exception)">
+             <summary>
+            
+             </summary>
+             <param name="message"></param>
+             <param name="inner"></param>
+        </member>
+        <member name="T:libargument.Exceptions.DuplicateKeyException">
+            <summary>
+            Thrown if a duplicate key has been found.
+            </summary>
+        </member>
+        <member name="M:libargument.Exceptions.DuplicateKeyException.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Exceptions.DuplicateKeyException.#ctor(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="message"></param>
+        </member>
+        <member name="M:libargument.Exceptions.DuplicateKeyException.#ctor(System.String,System.Exception)">
+             <summary>
+            
+             </summary>
+             <param name="message"></param>
+             <param name="inner"></param>
+        </member>
+        <member name="T:libargument.Exceptions.EquivocalActionsException">
+            <summary>
+            Thrown if Parser can has multiple choices for executing a method.
+            </summary>
+        </member>
+        <member name="M:libargument.Exceptions.EquivocalActionsException.#ctor">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Exceptions.EquivocalActionsException.#ctor(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="message"></param>
+        </member>
+        <member name="M:libargument.Exceptions.EquivocalActionsException.#ctor(System.String,System.Exception)">
+             <summary>
+            
+             </summary>
+             <param name="message"></param>
+             <param name="inner"></param>
+        </member>
+        <member name="T:libargument.Helper">
+            <summary>
+            Provides access to functions for better experience.
+            </summary>
+        </member>
+        <member name="T:libargument.Attributes.KeyAttribute">
+            <summary>
+            Override default behavior of using parameter name as key.
+            </summary>
+        </member>
+        <member name="M:libargument.Attributes.KeyAttribute.#ctor(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="key"></param>
+        </member>
+        <member name="P:libargument.Attributes.KeyAttribute.Key">
+            <summary>
+            Returns user defined key for parameter.
+            </summary>
+        </member>
+        <member name="T:libargument.Attributes.ParseAttribute">
+            <summary>
+            Specify this attribute if a method should be parsed by <see cref="T:libargument.Parser`1"/>.
+            </summary>
+        </member>
+        <member name="M:libargument.Attributes.ParseAttribute.#ctor">
+            <summary>
+            Creates a new attribute for current method indicating that this should be parsed.
+            </summary>
+        </member>
+        <member name="T:libargument.Parser`1">
+            <summary>
+            Provides access to <see cref="M:Tokenize()"/> and <see cref="M:Match()"/>. Executes matching methods in given <see cref="T:libargument.IController"/>.
+            </summary>
+            <typeparam name="T">Some type of <seealso cref="T:libargument.IController"/></typeparam>
+        </member>
+        <member name="M:libargument.Parser`1.#ctor(System.String)">
+            Parser(string)
+            <summary>
+            Constructor with specified arguments.
+            </summary>
+            <param name="arguments">Arguments for this instance.</param>
+        </member>
+        <member name="M:libargument.Parser`1.Match">
+            Match()
+            <summary>
+            Executes <seealso cref="M:Match&lt;TOut&gt;()" /> without returning anything.
+            </summary>
+        </member>
+        <member name="M:libargument.Parser`1.Match``1">
+            Match(TOut)
+            <summary>
+            Checks every method in current controller and executes best matching method.
+            This method tries to return correct type or throws an InvalidCastException.
+            </summary>
+            <remarks>Tokenize() has to be called before!</remarks>
+            <typeparam name="TOut">Return type</typeparam>
+            <returns>Invoked action return object.</returns>
+            <exception cref="T:System.InvalidCastException">Thrown if target type does not match returned type.</exception>
+        </member>
+        <member name="M:libargument.Parser`1.Tokenize">
+            Tokenize()
+            <summary>
+            Reads Environment.CommandLine and prepares tokens.
+            </summary>
+            <returns>If creation of tokens was successful.</returns>
+        </member>
+        <member name="M:libargument.Parser`1.buildMethodInfo(System.Collections.Generic.List{libargument.Method}@)">
+             buildMethodInfo()
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Parser`1.interpreteCharacterValue(System.Char,System.Char,System.Boolean@,System.Boolean@,System.Boolean@,System.Boolean@)">
+             interpreteCharacterValue(char, char, bool, bool, bool, bool)
+             <summary>
+            
+             </summary>
+             <param name="character"></param>
+             <param name="lastCharacter"></param>
+             <param name="inQuote"></param>
+             <param name="nextEscape"></param>
+             <param name="append"></param>
+             <param name="quit"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Parser`1.readParameter(System.IO.StreamReader)">
+            <summary>
+            Tries to read a parameter out of the CommandLine.
+            </summary>
+            <param name="reader">A reader providing access to CommandLine</param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Parser`1.readParameterKey(System.IO.StreamReader)">
+            <summary>
+            Reads the key for a parameter.
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Parser`1.readParameterValue(System.IO.StreamReader)">
+            <summary>
+            Reads a value from parameter.
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="M:libargument.Parser`1.strikeMethods(System.Collections.Generic.List{libargument.Token},System.Collections.Generic.List{libargument.Method}@)">
+             strikeMethod(List[Token], List[Method])
+             <summary>
+            
+             </summary>
+             <param name="tokens"></param>
+             <param name="methods"></param>
+             <returns></returns>
+        </member>
+        <member name="T:libargument.Switch">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Switch.op_Implicit(libargument.Switch)~System.Boolean">
+             <summary>
+            
+             </summary>
+             <param name="switch"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Switch.op_Inequality(libargument.Switch,libargument.Switch)">
+             <summary>
+            
+             </summary>
+             <param name="left"></param>
+             <param name="right"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Switch.op_Equality(libargument.Switch,libargument.Switch)">
+             <summary>
+            
+             </summary>
+             <param name="left"></param>
+             <param name="right"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Switch.Equals(System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="obj"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Switch.Equals(System.Boolean)">
+             <summary>
+            
+             </summary>
+             <param name="other"></param>
+             <returns></returns>
+        </member>
+        <member name="M:libargument.Switch.GetHashCode">
+             <summary>
+            
+             </summary>
+             <returns>Always returns -1</returns>
+        </member>
+    </members>
+</doc>
