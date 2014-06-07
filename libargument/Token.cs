@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace libargument
+﻿namespace libargument
 {
 	internal struct Token
 	{
-		public string Key;
-		public string Value;
+		internal string Key;
+		internal string Value;
 
-		public Token(string key, string value)
+		internal Token(string key, string value)
 		{
 			Key = key;
 			Value = value;
 		}
 
-		public bool HasValue { get { return Value != null; } }
+		internal bool HasValue { get { return Value != null; } }
 
-		public bool IsDefined { get { return Key != null; } }
+		internal bool IsDefined { get { return Key != null; } }
 
-		public bool IsSwitch { get { return Value == null; } }
+		internal bool IsSwitch { get { return Value == null; } }
 
 		public override string ToString()
 		{

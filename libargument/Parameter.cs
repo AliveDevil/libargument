@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace libargument
 {
 	internal struct Parameter
 	{
-		public List<string> Abbreviations;
-		public object DefaultValue;
-		public ParameterInfo Info;
-		public bool IsArray;
-		public bool IsOptional;
-		public string Key;
-		public List<Token> Token;
-		public Type Type;
+		internal List<string> Abbreviations;
+		internal object DefaultValue;
+		internal ParameterInfo Info;
+		internal bool IsArray;
+		internal bool IsOptional;
+		internal string Key;
+		internal List<Token> Token;
+		internal Type Type;
 
-		public Parameter(ParameterInfo parameter)
+		internal Parameter(ParameterInfo parameter)
 		{
 			Info = parameter;
 			Key = Info.GetKey();
@@ -30,7 +28,7 @@ namespace libargument
 			Token = new List<Token>();
 		}
 
-		public bool IsKnown(string key)
+		internal bool IsKnown(string key)
 		{
 			return Key.Equals(key, StringComparison.OrdinalIgnoreCase) | Abbreviations.Contains(key, OrdinalIgnoreCaseEqualityComparer.Singleton);
 		}

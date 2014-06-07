@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="Conversion\ITypeConverter.cs" />
     <Compile Include="Conversion\StringConverter.cs" />
+    <Compile Include="Conversion\SwitchConverter.cs" />
     <Compile Include="Exceptions\ActionNotFoundException.cs" />
     <Compile Include="Exceptions\DuplicateKeyException.cs" />
     <Compile Include="Exceptions\EquivocalActionsException.cs" />
@@ -101,6 +102,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AssemblyInfo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Switch.cs" />
     <Compile Include="Token.cs" />
   </ItemGroup>
   <ItemGroup>

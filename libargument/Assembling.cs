@@ -1,15 +1,12 @@
 ﻿using libargument.Conversion;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace libargument
 {
 	internal static class Assembling
 	{
-		public static object ResolveCollection(ITypeConverter converter, Parameter parameter)
+		internal static object ResolveCollection(ITypeConverter converter, Parameter parameter)
 		{
 			if (parameter.Token.Count == 0 && parameter.IsOptional)
 				return parameter.DefaultValue;
@@ -33,7 +30,7 @@ namespace libargument
 			return array;
 		}
 
-		public static object ResolveValue(ITypeConverter converter, Parameter parameter)
+		internal static object ResolveValue(ITypeConverter converter, Parameter parameter)
 		{
 			if (parameter.Token.Count == 0)
 				throw new Exception();

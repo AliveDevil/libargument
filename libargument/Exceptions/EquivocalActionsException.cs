@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 
 namespace libargument.Exceptions
 {
 	/// <summary>
-	///
+	/// Thrown if Parser can has multiple choices for executing a method.
 	/// </summary>
 	[Serializable]
 	// any english speaking people: is that name right?

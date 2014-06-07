@@ -3,48 +3,56 @@
 	/// <summary>
 	///
 	/// </summary>
-	public interface ITypeConverter
+	public sealed class SwitchConverter : ITypeConverter<Switch>
 	{
 		/// <summary>
 		///
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		bool CanRead(string value);
+		public bool CanRead(string value)
+		{
+			return true;
+		}
 
 		/// <summary>
 		///
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		object Read(string value);
+		object ITypeConverter.Read(string value)
+		{
+			return new Switch();
+		}
 
 		/// <summary>
 		///
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		string Write(object value);
-	}
-
-	/// <summary>
-	/// Generic interface to <see cref="T:libargument.ITypeConverter"/>
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public interface ITypeConverter<T> : ITypeConverter
-	{
-		/// <summary>
-		///
-		/// </summary>
-		/// <param name="value"></param>
-		/// <returns></returns>
-		new T Read(string value);
+		public Switch Read(string value)
+		{
+			return new Switch();
+		}
 
 		/// <summary>
 		///
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		string Write(T value);
+		public string Write(Switch value)
+		{
+			return "";
+		}
+
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		public string Write(object value)
+		{
+			return "";
+		}
 	}
 }

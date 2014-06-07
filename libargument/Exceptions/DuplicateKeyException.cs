@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 
 namespace libargument.Exceptions
 {
 	/// <summary>
-	///
+	/// Thrown if a duplicate key has been found.
 	/// </summary>
 	[Serializable]
 	public sealed class DuplicateKeyException : Exception

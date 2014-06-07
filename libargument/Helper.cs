@@ -1,6 +1,5 @@
 ﻿using libargument.Attributes;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -12,7 +11,7 @@ namespace libargument
 	/// </summary>
 	internal static class Helper
 	{
-		public static string ApplicationName(this IController controller)
+		internal static string ApplicationName(this IController controller)
 		{
 			var applicationNames = controller.GetType().UnderlyingSystemType.GetCustomAttributes(false).OfType<ApplicationNameAttribute>();
 			if (applicationNames.Any())
@@ -21,12 +20,12 @@ namespace libargument
 				return controller.GetType().UnderlyingSystemType.Assembly.GetName().Name;
 		}
 
-		public static IEnumerable<string> GetAbbreviations(this ParameterInfo parameter)
+		internal static IEnumerable<string> GetAbbreviations(this ParameterInfo parameter)
 		{
 			return parameter.GetCustomAttributes(false).OfType<AbbreviationAttribute>().Select(item => item.Abbreviation);
 		}
 
-		public static string GetKey(this ParameterInfo parameter)
+		internal static string GetKey(this ParameterInfo parameter)
 		{
 			var keyAttributes = parameter.GetCustomAttributes(false).OfType<KeyAttribute>();
 			if (keyAttributes.Any())
@@ -34,14 +33,14 @@ namespace libargument
 			return parameter.Name;
 		}
 
-		public static Type GetParameterType(this ParameterInfo parameter)
+		internal static Type GetParameterType(this ParameterInfo parameter)
 		{
 			if (parameter.ParameterType.IsArray)
 				return parameter.ParameterType.GetElementType();
 			return parameter.ParameterType;
 		}
 
-		public static bool HasKey(this ICollection<Parameter> parameter, Token token)
+		internal static bool HasKey(this ICollection<Parameter> parameter, Token token)
 		{
 			bool anyKnown = false;
 			foreach (var p in parameter)
@@ -56,7 +55,7 @@ namespace libargument
 			return anyKnown;
 		}
 
-		public static bool IsParse(this MethodInfo method)
+		internal static bool IsParse(this MethodInfo method)
 		{
 			return method.GetCustomAttributes(false).OfType<ParseAttribute>().Any();
 		}

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace libargument
 {
 	internal sealed class OrdinalIgnoreCaseEqualityComparer : IEqualityComparer<string>
 	{
-		public readonly static OrdinalIgnoreCaseEqualityComparer Singleton = new OrdinalIgnoreCaseEqualityComparer();
+		internal readonly static OrdinalIgnoreCaseEqualityComparer Singleton = new OrdinalIgnoreCaseEqualityComparer();
 
 		public bool Equals(string x, string y)
 		{

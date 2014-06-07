@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
 
 namespace libargument.Exceptions
 {
 	/// <summary>
-	///
+	/// Thrown if an action has not been found in current controller instance.
 	/// </summary>
 	[Serializable]
 	public sealed class ActionNotFoundException : Exception
