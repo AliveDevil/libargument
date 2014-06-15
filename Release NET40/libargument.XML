@@ -941,6 +941,29 @@
              <param name="message"></param>
              <param name="inner"></param>
         </member>
+        <member name="T:libargument.Exceptions.NotResolvedException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:libargument.Exceptions.NotResolvedException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:libargument.Exceptions.NotResolvedException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:libargument.Exceptions.NotResolvedException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="inner"></param>
+        </member>
         <member name="T:libargument.Helper">
             <summary>
             Provides access to functions for better experience.
@@ -1021,12 +1044,7 @@
             
             </summary>
             <param name="tokens"></param>
-        </member>
-        <member name="M:libargument.Parser`1.buildMethodInfo(System.Collections.Generic.List{libargument.Method}@)">
-             buildMethodInfo()
-             <summary>
-            
-             </summary>
+            <param name="methods"></param>
         </member>
         <member name="M:libargument.Parser`1.interpreteCharacterValue(System.Char,System.Char,System.Boolean@,System.Boolean@,System.Boolean@,System.Boolean@)">
              interpreteCharacterValue(char, char, bool, bool, bool, bool)
@@ -1067,7 +1085,6 @@
              <summary>
             
              </summary>
-             <param name="tokens"></param>
              <param name="methods"></param>
              <returns></returns>
         </member>
