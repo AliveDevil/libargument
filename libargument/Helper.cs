@@ -57,29 +57,7 @@ namespace libargument
 		{
 			bool anyKnown = false;
 			foreach (var p in parameter)
-			{
-				if (p.IsKnown(token.Key))
-				{
-					anyKnown = true;
-					if (!p.Token.Contains(token))
-						p.Token.Add(token);
-				}
-			}
-			return anyKnown;
-		}
-
-		internal static bool HasKey(this ICollection<Field> fields, Token token)
-		{
-			bool anyKnown = false;
-			foreach (var p in fields)
-			{
-				if (p.IsKnown(token.Key))
-				{
-					anyKnown = true;
-					if (!p.Token.Contains(token))
-						p.Token.Add(token);
-				}
-			}
+				anyKnown |= p.IsKnown(token);
 			return anyKnown;
 		}
 

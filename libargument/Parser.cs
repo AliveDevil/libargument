@@ -53,7 +53,7 @@ namespace libargument
 		public TOut Match<TOut>()
 		{
 			// strike every token which is available as field.
-			applyOptions();
+			applyOptions(tokenList);
 
 			// forward declaration.
 			// don't know why I do this .. maybe OCD.
@@ -115,14 +115,27 @@ namespace libargument
 		/// <summary>
 		///
 		/// </summary>
-		private void applyOptions()
+		private void applyOptions(List<Token> tokens)
 		{
-			var fields = (from item in targetType.GetFields(BindingFlags.Public | BindingFlags.Instance)
-						  where item.IsOption()
-						  select new Field(item)).ToList();
+			var fields = targetType
+				.GetFields(BindingFlags.Public | BindingFlags.Instance)
+				.Where(field => field.IsOption())
+				.Select(field => new Field(field))
+				.Where(field => tokens.Any(token => field.IsKnown(token)));
 
-			//var fields = targetType.GetFields(BindingFlags.Public | BindingFlags.Instance).Where(field => field.IsOption()).Select(field => new Field(field));
+			if (fields.Any(field => field.Token.Count > 1))
+				throw new DuplicateKeyException();
 
+			tokens.RemoveAll(token => fields.Any(field => field.Token.Contains(token)));
+
+			foreach (var field in fields)
+			{
+				var converter = controller.ResolveType(field.Type);
+				if (field.IsArray)
+					field.Info.SetValue(controller, Assembling.ResolveCollection(converter, field));
+				else
+					;
+			}
 		}
 
 		/// buildMethodInfo()
