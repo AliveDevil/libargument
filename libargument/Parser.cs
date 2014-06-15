@@ -73,10 +73,7 @@ namespace libargument
 			foreach (var item in selectedMethod.Parameter)
 			{
 				var converter = controller.ResolveType(item.Type);
-				if (item.IsArray)
-					objectParameter.Add(Assembling.ResolveCollection(converter, item));
-				else
-					objectParameter.Add(Assembling.ResolveValue(converter, item));
+				objectParameter.Add(Assembling.Resolve(converter, item));
 			}
 
 			try
@@ -120,21 +117,24 @@ namespace libargument
 			var fields = targetType
 				.GetFields(BindingFlags.Public | BindingFlags.Instance)
 				.Where(field => field.IsOption())
-				.Select(field => new Field(field))
-				.Where(field => tokens.Any(token => field.IsKnown(token))).ToArray();
+				.Select(field => new Field(field)).ToList();
+
+			for (int i = tokens.Count - 1; i >= 0; i--)
+			{
+				bool known = false;
+				foreach (var field in fields)
+					known |= field.IsKnown(tokens[i]);
+				if (known)
+					tokens.RemoveAt(i);
+			}
 
 			if (fields.Any(field => field.Token.Count > 1))
 				throw new DuplicateKeyException();
 
-			tokens.RemoveAll(token => fields.Any(field => field.Token.Contains(token)));
-
 			foreach (var field in fields)
 			{
 				var converter = controller.ResolveType(field.Type);
-				if (field.IsArray)
-					field.Info.SetValue(controller, Assembling.ResolveCollection(converter, field));
-				else
-					field.Info.SetValue(controller, Assembling.ResolveValue(converter, field));
+				field.Info.SetValue(controller, Assembling.Resolve(converter, field));
 			}
 		}
 

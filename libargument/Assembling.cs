@@ -6,6 +6,13 @@ namespace libargument
 {
 	internal static class Assembling
 	{
+		internal static object Resolve(ITypeConverter converter, Binding binding)
+		{
+			if (binding.IsArray)
+				return ResolveCollection(converter, binding);
+			return ResolveValue(converter, binding);
+		}
+
 		internal static object ResolveCollection(ITypeConverter converter, Binding binding)
 		{
 			if (binding.Token.Count == 0 && binding.IsOptional)
