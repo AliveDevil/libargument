@@ -151,6 +151,7 @@ namespace libargument
 		/// 
 		/// </summary>
 		/// <param name="tokens"></param>
+		/// <param name="methods"></param>
 		private void applyParameters(List<Token> tokens, ref List<Method> methods)
 		{
 			methods = targetType.GetMethods(BindingFlags.Public | BindingFlags.Instance)
@@ -169,19 +170,6 @@ namespace libargument
 
 			if (methods.Any(method => method.Parameter.Any(parameter => parameter.Token.Count > 1 & !parameter.IsArray)))
 				throw new DuplicateKeyException();
-		}
-
-		/// buildMethodInfo()
-		/// <summary>
-		///
-		/// </summary>
-		private void buildMethodInfo(ref List<Method> methods)
-		{
-			methods = targetType
-				.GetMethods(BindingFlags.Public | BindingFlags.Instance)
-				.Where(method => method.IsParse())
-				.Select(method => new Method(method))
-				.ToList();
 		}
 
 		/// interpreteCharacterValue(char, char, bool, bool, bool, bool)
@@ -318,7 +306,6 @@ namespace libargument
 		/// <summary>
 		///
 		/// </summary>
-		/// <param name="tokens"></param>
 		/// <param name="methods"></param>
 		/// <returns></returns>
 		private void strikeMethods(ref List<Method> methods)
