@@ -1,21 +1,22 @@
 ﻿<#+
-static Type[] types = new Type[]
+static String[] types = new String[]
 {
-	typeof(Int16), // 0
-	typeof(Int32), // 1
-	typeof(Int64), // 2
-	typeof(UInt16), // 3
-	typeof(UInt32), // 4
-	typeof(UInt64), // 5
-	typeof(Single), // 6
-	typeof(Double), // 7
-	typeof(DateTime), // 8
-	typeof(TimeSpan), // 9
-	typeof(Boolean), // 10
-	typeof(String), // 11
-	typeof(Decimal), // 12
+	"Int16", // 0
+	"Int32", // 1
+	"Int64", // 2
+	"UInt16", // 3
+	"UInt32", // 4
+	"UInt64", // 5
+	"Single", // 6
+	"Double", // 7
+	"DateTime", // 8
+	"TimeSpan", // 9
+	"Boolean", // 10
+	"String", // 11
+	"Decimal", // 12
+	"Switch", // 13
 };
-static Dictionary<Type, bool> generateClasses = new Dictionary<Type, bool>()
+static Dictionary<String, bool> generateClasses = new Dictionary<String, bool>()
 {
 	{types[0], true},
 	{types[1], true},
@@ -30,12 +31,13 @@ static Dictionary<Type, bool> generateClasses = new Dictionary<Type, bool>()
 	{types[10], true},
 	{types[11], false},
 	{types[12], true},
+	{types[13], false},
 };
-public Type[] Types()
+public String[] Types()
 {
 	return types;
 }
-public bool GenerateClass(Type type)
+public bool GenerateClass(String type)
 {
 	return generateClasses[type];
 }

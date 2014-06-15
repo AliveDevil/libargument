@@ -41,7 +41,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to Int16 or throws an exception. See <see cref="System.Int16.Parse(System.String)" />.
+		/// Tries to convert specified value to Int16 or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -111,7 +111,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to Int32 or throws an exception. See <see cref="System.Int32.Parse(System.String)" />.
+		/// Tries to convert specified value to Int32 or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -181,7 +181,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to Int64 or throws an exception. See <see cref="System.Int64.Parse(System.String)" />.
+		/// Tries to convert specified value to Int64 or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -251,7 +251,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to UInt16 or throws an exception. See <see cref="System.UInt16.Parse(System.String)" />.
+		/// Tries to convert specified value to UInt16 or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -321,7 +321,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to UInt32 or throws an exception. See <see cref="System.UInt32.Parse(System.String)" />.
+		/// Tries to convert specified value to UInt32 or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -391,7 +391,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to UInt64 or throws an exception. See <see cref="System.UInt64.Parse(System.String)" />.
+		/// Tries to convert specified value to UInt64 or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -461,7 +461,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to Single or throws an exception. See <see cref="System.Single.Parse(System.String)" />.
+		/// Tries to convert specified value to Single or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -531,7 +531,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to Double or throws an exception. See <see cref="System.Double.Parse(System.String)" />.
+		/// Tries to convert specified value to Double or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -601,7 +601,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to DateTime or throws an exception. See <see cref="System.DateTime.Parse(System.String)" />.
+		/// Tries to convert specified value to DateTime or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -671,7 +671,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to TimeSpan or throws an exception. See <see cref="System.TimeSpan.Parse(System.String)" />.
+		/// Tries to convert specified value to TimeSpan or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -741,7 +741,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to Boolean or throws an exception. See <see cref="System.Boolean.Parse(System.String)" />.
+		/// Tries to convert specified value to Boolean or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
@@ -811,7 +811,7 @@ namespace libargument.Conversion
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to Decimal or throws an exception. See <see cref="System.Decimal.Parse(System.String)" />.
+		/// Tries to convert specified value to Decimal or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>

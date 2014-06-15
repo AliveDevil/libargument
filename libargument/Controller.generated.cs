@@ -20,6 +20,7 @@ namespace libargument
 			RegisterTypeConverter<Boolean>(new BooleanConverter(controller));
 			RegisterTypeConverter<String>(new StringConverter(controller));
 			RegisterTypeConverter<Decimal>(new DecimalConverter(controller));
+			RegisterTypeConverter<Switch>(new SwitchConverter(controller));
 		}
 	}
 }

@@ -13,9 +13,9 @@ foreach (var type in Types())
 	{
 #>
 	/// <summary>
-	/// Converts a string from and to <#= type.Name #>.
+	/// Converts a string from and to <#= type #>.
 	/// </summary>
-	public sealed class <#= type.Name #>Converter : ITypeConverter<<#= type.Name #>>
+	public sealed class <#= type #>Converter : ITypeConverter<<#= type #>>
 	{
 		private IController target;
 
@@ -23,7 +23,7 @@ foreach (var type in Types())
 		///  Default constructor providing access to an IController instance.
 		/// </summary>
 		/// <param name="target"></param>
-		public <#= type.Name #>Converter(IController target)
+		public <#= type #>Converter(IController target)
 		{
 			this.target = target;
 		}
@@ -32,32 +32,32 @@ foreach (var type in Types())
 		/// Determines if a value can be read by current converter.
 		/// </summary>
 		/// <param name="value"></param>
-		/// <returns>If this value can be converted to <#= type.Name #>.</returns>
+		/// <returns>If this value can be converted to <#= type #>.</returns>
 		public bool CanRead(string value)
 		{
-			<#= type.Name #> o;
-			return <#= type.Name #>.TryParse(value, out o);
+			<#= type #> o;
+			return <#= type #>.TryParse(value, out o);
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to <#= type.Name #> or returns null in case of failure.
+		/// Tries to convert specified value to <#= type #> or returns null in case of failure.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
 		object ITypeConverter.Read(string value)
 		{
-			<#= type.Name #> o;
-			return <#= type.Name #>.TryParse(value, out o) ? (Object)o : null;
+			<#= type #> o;
+			return <#= type #>.TryParse(value, out o) ? (Object)o : null;
 		}
 
 		/// <summary>
-		/// Tries to convert specified value to <#= type.Name #> or throws an exception. See <see cref="<#= type.FullName #>.Parse(System.String)" />.
+		/// Tries to convert specified value to <#= type #> or throws an exception.
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public <#= type.Name #> Read(string value)
+		public <#= type #> Read(string value)
 		{
-			return <#= type.Name #>.Parse(value);
+			return <#= type #>.Parse(value);
 		}
 
 		/// <summary>
@@ -65,7 +65,7 @@ foreach (var type in Types())
 		/// </summary>
 		/// <param name="value"></param>
 		/// <returns></returns>
-		public string Write(<#= type.Name #> value)
+		public string Write(<#= type #> value)
 		{
 			return value.ToString();
 		}
@@ -77,9 +77,9 @@ foreach (var type in Types())
 		/// <returns></returns>
 		public string Write(object value)
 		{
-			if (value is <#= type.Name #>)
+			if (value is <#= type #>)
 				return value.ToString();
-			throw new ArgumentException("value is no <#= type.Name #>.");
+			throw new ArgumentException("value is no <#= type #>.");
 		}
 	}
 <#

@@ -5,6 +5,17 @@
 	/// </summary>
 	public sealed class SwitchConverter : ITypeConverter<Switch>
 	{
+		private IController target;
+
+		/// <summary>
+		///
+		/// </summary>
+		/// <param name="target"></param>
+		public SwitchConverter(IController target)
+		{
+			this.target = target;
+		}
+
 		/// <summary>
 		///
 		/// </summary>

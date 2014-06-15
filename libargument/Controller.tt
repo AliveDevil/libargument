@@ -15,7 +15,7 @@ namespace libargument
 foreach (var type in Types())
 {
 #>
-			RegisterTypeConverter<<#= type.Name #>>(new <#= type.Name #>Converter(controller));
+			RegisterTypeConverter<<#= type #>>(new <#= type #>Converter(controller));
 <#
 }
 #>

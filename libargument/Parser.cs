@@ -121,7 +121,7 @@ namespace libargument
 				.GetFields(BindingFlags.Public | BindingFlags.Instance)
 				.Where(field => field.IsOption())
 				.Select(field => new Field(field))
-				.Where(field => tokens.Any(token => field.IsKnown(token)));
+				.Where(field => tokens.Any(token => field.IsKnown(token))).ToArray();
 
 			if (fields.Any(field => field.Token.Count > 1))
 				throw new DuplicateKeyException();
@@ -134,7 +134,7 @@ namespace libargument
 				if (field.IsArray)
 					field.Info.SetValue(controller, Assembling.ResolveCollection(converter, field));
 				else
-					;
+					field.Info.SetValue(controller, Assembling.ResolveValue(converter, field));
 			}
 		}
 
