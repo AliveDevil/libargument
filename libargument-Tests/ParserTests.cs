@@ -96,5 +96,13 @@ namespace libargument_Tests
 			parser.Tokenize();
 			Assert.AreEqual("test", parser.Match<string>());
 		}
+
+		[TestMethod]
+		public void MultipleSwitchesTest()
+		{
+			var parser = new Parser<ParserTestObject>("/switch1 /switch2");
+			parser.Tokenize();
+			Assert.AreEqual(165, parser.Match<int>());
+		}
 	}
 }

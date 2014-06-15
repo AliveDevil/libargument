@@ -72,7 +72,7 @@ namespace libargument
 				throw new EquivocalActionsException();
 
 			var selectedMethod = methodInfos.First();
-			var objectParameter = new HashSet<object>();
+			var objectParameter = new List<object>();
 
 			foreach (var item in selectedMethod.Parameter)
 			{

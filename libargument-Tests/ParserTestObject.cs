@@ -12,6 +12,12 @@ namespace libargument_Tests
 		public string Test;
 
 		[Parse]
+		public int ActionTest([Key("action"), Abbreviation("a")] Switch action)
+		{
+			return 73572;
+		}
+
+		[Parse]
 		public int DuplicateTest([Key("duplicate")] Switch duplicate)
 		{
 			return 1;
@@ -30,21 +36,27 @@ namespace libargument_Tests
 		}
 
 		[Parse]
+		public int MultipleSwitchTest([Key("switch1")] Switch firstSwitch, [Key("switch2")] Switch secondSwitch)
+		{
+			return 165;
+		}
+
+		[Parse]
 		public string Name([Key("name")]Switch name)
 		{
 			return Name();
 		}
 
 		[Parse]
-		public int SwitchTest([Key("switch"), Abbreviation("s")] Switch switchParameter)
+		public string OptionTest([Key("option")] Switch option)
 		{
-			return 7357;
+			return Test;
 		}
 
 		[Parse]
-		public int ActionTest([Key("action"), Abbreviation("a")] Switch action)
+		public int SwitchTest([Key("switch"), Abbreviation("s")] Switch switchParameter)
 		{
-			return 73572;
+			return 7357;
 		}
 
 		[Parse]
@@ -57,12 +69,6 @@ namespace libargument_Tests
 		public int WhitespaceTest2([Key("w1")] string whitespace, [Key("w2")] string w2)
 		{
 			return 4;
-		}
-
-		[Parse]
-		public string OptionTest([Key("option")] Switch option)
-		{
-			return Test;
 		}
 	}
 }
