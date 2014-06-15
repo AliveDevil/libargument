@@ -59,15 +59,19 @@ namespace libargument
 			// don't know why I do this .. maybe OCD.
 			var methodInfos = default(List<Method>);
 
-			buildMethodInfo(ref methodInfos);
-			strikeMethods(tokenList, ref methodInfos);
+			applyParameters(tokenList, ref methodInfos);
+
+			if (!controller.SkipUnresolvedArguments && tokenList.Count > 0)
+				throw new NotResolvedException();
+
+			strikeMethods(ref methodInfos);
 
 			if (methodInfos.Count == 0)
 				throw new ActionNotFoundException();
 			if (methodInfos.Count > 1)
 				throw new EquivocalActionsException();
 
-			var selectedMethod = methodInfos[0];
+			var selectedMethod = methodInfos.First();
 			var objectParameter = new HashSet<object>();
 
 			foreach (var item in selectedMethod.Parameter)
@@ -108,7 +112,7 @@ namespace libargument
 					tokenList.Add(readParameter(reader));
 		}
 
-		/// applyOptions()
+		/// applyOptions(List[Token])
 		/// <summary>
 		///
 		/// </summary>
@@ -117,7 +121,8 @@ namespace libargument
 			var fields = targetType
 				.GetFields(BindingFlags.Public | BindingFlags.Instance)
 				.Where(field => field.IsOption())
-				.Select(field => new Field(field)).ToList();
+				.Select(field => new Field(field))
+				.ToList();
 
 			for (int i = tokens.Count - 1; i >= 0; i--)
 			{
@@ -128,6 +133,8 @@ namespace libargument
 					tokens.RemoveAt(i);
 			}
 
+			fields = fields.Where(field => field.Token.Count > 0).ToList();
+
 			if (fields.Any(field => field.Token.Count > 1))
 				throw new DuplicateKeyException();
 
@@ -136,6 +143,32 @@ namespace libargument
 				var converter = controller.ResolveType(field.Type);
 				field.Info.SetValue(controller, Assembling.Resolve(converter, field));
 			}
+		}
+
+
+		/// applyParameters(List[Token])
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="tokens"></param>
+		private void applyParameters(List<Token> tokens, ref List<Method> methods)
+		{
+			methods = targetType.GetMethods(BindingFlags.Public | BindingFlags.Instance)
+					.Where(method => method.IsParse())
+					.Select(method => new Method(method))
+					.ToList();
+
+			for (int i = tokens.Count - 1; i >= 0; i--)
+			{
+				bool known = false;
+				foreach (var method in methods)
+					known |= method.Parameter.HasKey(tokens[i]);
+				if (known)
+					tokens.RemoveAt(i);
+			}
+
+			if (methods.Any(method => method.Parameter.Any(parameter => parameter.Token.Count > 1 & !parameter.IsArray)))
+				throw new DuplicateKeyException();
 		}
 
 		/// buildMethodInfo()
@@ -288,16 +321,9 @@ namespace libargument
 		/// <param name="tokens"></param>
 		/// <param name="methods"></param>
 		/// <returns></returns>
-		private void strikeMethods(List<Token> tokens, ref List<Method> methods)
+		private void strikeMethods(ref List<Method> methods)
 		{
-			foreach (var token in tokens)
-			{
-				for (int i = methods.Count - 1; i >= 0; i--)
-				{
-					if (!methods[i].Parameter.HasKey(token))
-						methods.RemoveAt(i);
-				}
-			}
+			methods = methods.Where(method => method.Parameter.All(parameter => parameter.Token.Count > 0 | parameter.IsOptional)).ToList();
 		}
 	}
 }

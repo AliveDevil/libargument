@@ -53,7 +53,7 @@ namespace libargument
 			return parameter.ParameterType;
 		}
 
-		internal static bool HasKey(this ICollection<Parameter> parameter, Token token)
+		internal static bool HasKey<T>(this ICollection<T> parameter, Token token) where T : Binding
 		{
 			bool anyKnown = false;
 			foreach (var p in parameter)

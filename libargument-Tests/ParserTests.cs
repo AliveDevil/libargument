@@ -27,16 +27,25 @@ namespace libargument_Tests
 		[TestMethod]
 		public void MatchIEnumerableTest()
 		{
-			var parser = new Parser<ParserTestObject>("/test=test1 /test=test2");
+			var parser = new Parser<ParserTestObject>("/collection=test1 /collection=test2");
 			parser.Tokenize();
 			Assert.AreEqual(2, parser.Match<int>());
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(NotResolvedException))]
+		public void MatchNotResolved()
+		{
+			var parser = new Parser<ParserTestObject>("/notfound");
+			parser.Tokenize();
+			parser.Match();
 		}
 
 		[TestMethod]
 		[ExpectedException(typeof(ActionNotFoundException))]
 		public void MatchNotFoundTest()
 		{
-			var parser = new Parser<ParserTestObject>("/notfound");
+			var parser = new Parser<ParserTestObject>("/w1=test");
 			parser.Tokenize();
 			parser.Match();
 		}

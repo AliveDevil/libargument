@@ -11,7 +11,7 @@ namespace libargument
 		/// <summary>
 		/// 
 		/// </summary>
-		bool SkipOrphanedArguments { get; }
+		bool SkipUnresolvedArguments { get; }
 
 		/// <summary>
 		///

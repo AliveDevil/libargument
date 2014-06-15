@@ -12,7 +12,7 @@ namespace libargument_Tests
 	public sealed class ParserNamedTestObject : Controller
 	{
 		[Parse]
-		public string Name([Key("name")]bool name)
+		public string Name([Key("name")] Switch name)
 		{
 			return Name();
 		}

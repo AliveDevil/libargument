@@ -26,7 +26,7 @@ namespace libargument
 		/// <summary>
 		/// 
 		/// </summary>
-		public virtual bool SkipOrphanedArguments
+		public virtual bool SkipUnresolvedArguments
 		{
 			get { return false; }
 		}

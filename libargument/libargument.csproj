@@ -91,6 +91,7 @@
     <Compile Include="Exceptions\ActionNotFoundException.cs" />
     <Compile Include="Exceptions\DuplicateKeyException.cs" />
     <Compile Include="Exceptions\EquivocalActionsException.cs" />
+    <Compile Include="Exceptions\NotResolvedException.cs" />
     <Compile Include="Field.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="IController.cs" />
