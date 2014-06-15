@@ -79,5 +79,13 @@ namespace libargument_Tests
 			parser.Tokenize();
 			Assert.AreEqual("libargument-Tests", parser.Match<string>());
 		}
+
+		[TestMethod]
+		public void OptionTest()
+		{
+			var parser = new Parser<ParserTestObject>("/option /test=test");
+			parser.Tokenize();
+			Assert.AreEqual("test", parser.Match<string>());
+		}
 	}
 }

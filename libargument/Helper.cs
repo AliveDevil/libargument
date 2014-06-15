@@ -25,7 +25,20 @@ namespace libargument
 			return parameter.GetCustomAttributes(false).OfType<AbbreviationAttribute>().Select(item => item.Abbreviation);
 		}
 
+		internal static IEnumerable<string> GetAbbreviations(this FieldInfo parameter)
+		{
+			return parameter.GetCustomAttributes(false).OfType<AbbreviationAttribute>().Select(item => item.Abbreviation);
+		}
+
 		internal static string GetKey(this ParameterInfo parameter)
+		{
+			var keyAttributes = parameter.GetCustomAttributes(false).OfType<KeyAttribute>();
+			if (keyAttributes.Any())
+				return keyAttributes.First().Key;
+			return parameter.Name;
+		}
+
+		internal static string GetKey(this FieldInfo parameter)
 		{
 			var keyAttributes = parameter.GetCustomAttributes(false).OfType<KeyAttribute>();
 			if (keyAttributes.Any())
@@ -53,6 +66,26 @@ namespace libargument
 				}
 			}
 			return anyKnown;
+		}
+
+		internal static bool HasKey(this ICollection<Field> fields, Token token)
+		{
+			bool anyKnown = false;
+			foreach (var p in fields)
+			{
+				if (p.IsKnown(token.Key))
+				{
+					anyKnown = true;
+					if (!p.Token.Contains(token))
+						p.Token.Add(token);
+				}
+			}
+			return anyKnown;
+		}
+
+		internal static bool IsOption(this FieldInfo info)
+		{
+			return info.GetCustomAttributes(false).OfType<OptionAttribute>().Any();
 		}
 
 		internal static bool IsParse(this MethodInfo method)

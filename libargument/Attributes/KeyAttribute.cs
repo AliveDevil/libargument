@@ -5,7 +5,7 @@ namespace libargument.Attributes
 	/// <summary>
 	/// Override default behavior of using parameter name as key.
 	/// </summary>
-	[AttributeUsage(AttributeTargets.Parameter, Inherited = false, AllowMultiple = false)]
+	[AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
 	public sealed class KeyAttribute : Attribute
 	{
 		/// <summary>

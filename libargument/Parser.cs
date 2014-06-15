@@ -52,6 +52,9 @@ namespace libargument
 		/// <exception cref="System.InvalidCastException">Thrown if target type does not match returned type.</exception>
 		public TOut Match<TOut>()
 		{
+			// strike every token which is available as field.
+			applyOptions();
+
 			// forward declaration.
 			// don't know why I do this .. maybe OCD.
 			var methodInfos = default(List<Method>);
@@ -65,7 +68,7 @@ namespace libargument
 				throw new EquivocalActionsException();
 
 			var selectedMethod = methodInfos[0];
-			var objectParameter = new List<object>();
+			var objectParameter = new HashSet<object>();
 
 			foreach (var item in selectedMethod.Parameter)
 			{
@@ -106,6 +109,20 @@ namespace libargument
 			using (var reader = new StreamReader(memory))
 				while (reader.Peek() != -1)
 					tokenList.Add(readParameter(reader));
+		}
+
+		/// applyOptions()
+		/// <summary>
+		///
+		/// </summary>
+		private void applyOptions()
+		{
+			var fields = (from item in targetType.GetFields(BindingFlags.Public | BindingFlags.Instance)
+						  where item.IsOption()
+						  select new Field(item)).ToList();
+
+			//var fields = targetType.GetFields(BindingFlags.Public | BindingFlags.Instance).Where(field => field.IsOption()).Select(field => new Field(field));
+
 		}
 
 		/// buildMethodInfo()

@@ -5,7 +5,7 @@ namespace libargument.Attributes
 	/// <summary>
 	/// Adds an abbreviation to a parameter.
 	/// </summary>
-	[AttributeUsage(AttributeTargets.Parameter, Inherited = false, AllowMultiple = true)]
+	[AttributeUsage(AttributeTargets.Parameter | AttributeTargets.Field, Inherited = false, AllowMultiple = true)]
 	public sealed class AbbreviationAttribute : Attribute
 	{
 		/// <summary>
