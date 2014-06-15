@@ -9,6 +9,11 @@ namespace libargument
 	public interface IController
 	{
 		/// <summary>
+		/// 
+		/// </summary>
+		bool SkipOrphanedArguments { get; }
+
+		/// <summary>
 		///
 		/// </summary>
 		void Help();

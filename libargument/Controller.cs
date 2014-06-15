@@ -24,6 +24,14 @@ namespace libargument
 		}
 
 		/// <summary>
+		/// 
+		/// </summary>
+		public virtual bool SkipOrphanedArguments
+		{
+			get { return false; }
+		}
+
+		/// <summary>
 		///
 		/// </summary>
 		/// <param name="help"></param>
