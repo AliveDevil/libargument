@@ -58,6 +58,16 @@
             Gets short description.
             </summary>
         </member>
+        <member name="T:libargument.Attributes.OptionAttribute">
+            <summary>
+            Describes a field in a controller class as an option.
+            </summary>
+        </member>
+        <member name="M:libargument.Attributes.OptionAttribute.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:libargument.Controller">
              <summary>
             
@@ -105,6 +115,11 @@
              </summary>
              <typeparam name="T"></typeparam>
              <returns></returns>
+        </member>
+        <member name="P:libargument.IController.SkipUnresolvedArguments">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:libargument.Controller.#ctor">
              <summary>
@@ -161,6 +176,11 @@
             
              </summary>
              <returns></returns>
+        </member>
+        <member name="P:libargument.Controller.SkipUnresolvedArguments">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:libargument.Conversion.Int16Converter">
             <summary>
@@ -235,7 +255,7 @@
         </member>
         <member name="M:libargument.Conversion.Int16Converter.Read(System.String)">
             <summary>
-            Tries to convert specified value to Int16 or throws an exception. See <see cref="M:System.Int16.Parse(System.String)"/>.
+            Tries to convert specified value to Int16 or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -281,7 +301,7 @@
         </member>
         <member name="M:libargument.Conversion.Int32Converter.Read(System.String)">
             <summary>
-            Tries to convert specified value to Int32 or throws an exception. See <see cref="M:System.Int32.Parse(System.String)"/>.
+            Tries to convert specified value to Int32 or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -327,7 +347,7 @@
         </member>
         <member name="M:libargument.Conversion.Int64Converter.Read(System.String)">
             <summary>
-            Tries to convert specified value to Int64 or throws an exception. See <see cref="M:System.Int64.Parse(System.String)"/>.
+            Tries to convert specified value to Int64 or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -373,7 +393,7 @@
         </member>
         <member name="M:libargument.Conversion.UInt16Converter.Read(System.String)">
             <summary>
-            Tries to convert specified value to UInt16 or throws an exception. See <see cref="M:System.UInt16.Parse(System.String)"/>.
+            Tries to convert specified value to UInt16 or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -419,7 +439,7 @@
         </member>
         <member name="M:libargument.Conversion.UInt32Converter.Read(System.String)">
             <summary>
-            Tries to convert specified value to UInt32 or throws an exception. See <see cref="M:System.UInt32.Parse(System.String)"/>.
+            Tries to convert specified value to UInt32 or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -465,7 +485,7 @@
         </member>
         <member name="M:libargument.Conversion.UInt64Converter.Read(System.String)">
             <summary>
-            Tries to convert specified value to UInt64 or throws an exception. See <see cref="M:System.UInt64.Parse(System.String)"/>.
+            Tries to convert specified value to UInt64 or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -511,7 +531,7 @@
         </member>
         <member name="M:libargument.Conversion.SingleConverter.Read(System.String)">
             <summary>
-            Tries to convert specified value to Single or throws an exception. See <see cref="M:System.Single.Parse(System.String)"/>.
+            Tries to convert specified value to Single or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -557,7 +577,7 @@
         </member>
         <member name="M:libargument.Conversion.DoubleConverter.Read(System.String)">
             <summary>
-            Tries to convert specified value to Double or throws an exception. See <see cref="M:System.Double.Parse(System.String)"/>.
+            Tries to convert specified value to Double or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -603,7 +623,7 @@
         </member>
         <member name="M:libargument.Conversion.DateTimeConverter.Read(System.String)">
             <summary>
-            Tries to convert specified value to DateTime or throws an exception. See <see cref="M:System.DateTime.Parse(System.String)"/>.
+            Tries to convert specified value to DateTime or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -649,7 +669,7 @@
         </member>
         <member name="M:libargument.Conversion.TimeSpanConverter.Read(System.String)">
             <summary>
-            Tries to convert specified value to TimeSpan or throws an exception. See <see cref="M:System.TimeSpan.Parse(System.String)"/>.
+            Tries to convert specified value to TimeSpan or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -695,7 +715,7 @@
         </member>
         <member name="M:libargument.Conversion.BooleanConverter.Read(System.String)">
             <summary>
-            Tries to convert specified value to Boolean or throws an exception. See <see cref="M:System.Boolean.Parse(System.String)"/>.
+            Tries to convert specified value to Boolean or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -741,7 +761,7 @@
         </member>
         <member name="M:libargument.Conversion.DecimalConverter.Read(System.String)">
             <summary>
-            Tries to convert specified value to Decimal or throws an exception. See <see cref="M:System.Decimal.Parse(System.String)"/>.
+            Tries to convert specified value to Decimal or throws an exception.
             </summary>
             <param name="value"></param>
             <returns></returns>
@@ -810,6 +830,12 @@
              <summary>
             
              </summary>
+        </member>
+        <member name="M:libargument.Conversion.SwitchConverter.#ctor(libargument.IController)">
+             <summary>
+            
+             </summary>
+             <param name="target"></param>
         </member>
         <member name="M:libargument.Conversion.SwitchConverter.CanRead(System.String)">
              <summary>
@@ -983,6 +1009,19 @@
             </summary>
             <returns>If creation of tokens was successful.</returns>
         </member>
+        <member name="M:libargument.Parser`1.applyOptions(System.Collections.Generic.List{libargument.Token})">
+             applyOptions(List[Token])
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:libargument.Parser`1.applyParameters(System.Collections.Generic.List{libargument.Token},System.Collections.Generic.List{libargument.Method}@)">
+            applyParameters(List[Token])
+            <summary>
+            
+            </summary>
+            <param name="tokens"></param>
+        </member>
         <member name="M:libargument.Parser`1.buildMethodInfo(System.Collections.Generic.List{libargument.Method}@)">
              buildMethodInfo()
              <summary>
@@ -1023,7 +1062,7 @@
             <param name="reader"></param>
             <returns></returns>
         </member>
-        <member name="M:libargument.Parser`1.strikeMethods(System.Collections.Generic.List{libargument.Token},System.Collections.Generic.List{libargument.Method}@)">
+        <member name="M:libargument.Parser`1.strikeMethods(System.Collections.Generic.List{libargument.Method}@)">
              strikeMethod(List[Token], List[Method])
              <summary>
             
